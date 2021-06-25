@@ -1,0 +1,1027 @@
+swagger: '2.0'
+info:
+    title: 'Хүний нөөцийн системийн веб сервис'
+    description: '
+        <p>
+        <strong>Хүний нөөцийн систем</strong>ийн веб сервисийг RESTful API хэлбэрээр тодорхойлсон 
+        энэхүү баримт бичгийн дагуу стандартыг баримтлан интеграци хийх боломжтой.
+        </p>
+        <p>Веб сервисийн гарын авлагын ерөнхий цэснээс:</p>
+        <ul>
+            <li><a href="#">Ерөнхий мэдээлэл</a> хэсгээс веб сервисийн ойлголт, хэрхэн ашиглах,... зэрэг мэдээлэл.</li>
+            <li><a href="#">Веб сервистэй ажиллах</a> хэсгээс ХНУМС-ийн веб сервистэй ажиллах дэлгэрэнгүй мэдээлэл.</li>
+            <li><a href="#">v1.0.0</a> хэсгээс веб сервисийн 1.0.0 хувилбарын бүтэц болон дэлгэрэнгүй мэдээллийг авна.</li>
+            <li><a href="#">v2.0.0</a> хэсгээс веб сервисийн 2.0.0 хувилбарын бүтэц болон дэлгэрэнгүй мэдээллийг авна.</li>
+        </ul>
+        <br><br><br>
+        <h2 id="GeneralInformation">ЕРӨНХИЙ МЭДЭЭЛЭЛ</h2>
+        <p>
+            Веб сервистэй ажиллах хэсэгт веб сервисийн метадататай ажиллах, сингулар нөөц болон коллекшн нөөцтэй ажиллах
+                мөн хэрхэн тест хийх талаарх мэдээлэл агуулагдсан.
+        </p>
+        '
+    x-logo:
+      url: './logo.jpg'
+      backgroundColor: '#4067C6'
+
+    contact:
+        name: Веб сервисийн тусламж
+        url: 'https://hr.csc.gov.mn/doc'
+        email: support@csc.gov.mn
+host: hr.csc.gov.mn
+basePath: /api/rest/1.0.0
+schemes:
+    - https
+x-tagGroups:
+    -
+      name: ЕРӨНХИЙ МЭДЭЭЛЭЛ
+      x-traitTag: true
+      tags:
+        - 1. Хэрхэн эхлэх вэ?
+        - 2. Нууцлал, зөвшөөрөл
+        - 3. Веб сервисийн нөөц
+        - 4. Веб сервисийн үйлдэл
+        - 5. Веб сервисийн төлөв
+        - 6. Өгөгдлийн төрөл
+        - 7. Нэр томъёо
+ 
+tags:
+    -
+        name: 1. Хэрхэн эхлэх вэ?
+        description: '
+                        <div>
+                            <p><strong>Хүний Нөөцийн Удирдлагын Систем</strong>ийн веб сервистэй
+                                ажиллаж эхлэхээс өмнө дараах алхмуудыг заавал үзнэ үү:
+                            </p>
+                            <ul>
+                                <li>
+                                    JSON болон cURL талаар мэдлэгтэй байх. Дэлгэрэнгүй мэдээллийг <a class="new-window"
+                                        href="https://curl.haxx.se/" target="_blank" rel="noopener">https://curl.haxx.se</a> болон <a
+                                        class="new-window" href="http://www.json.org/" target="_blank" rel="noopener">http://www.json.org/</a>
+                                    хаягаас авна уу.</li>
+                                <li>REST веб сервисийн талаарх <a href="#tag/7.-Ner-tomuyoo">нэр томъёоны</a> ойлголттой байх. </li>
+                                <li>
+                                    Мэдээллийн нууцлал болон хамгаалалтын талаарх ойлголттой байх.
+                                    <a href="#tag/2.-Nuuclal-zvshrl">Нууцлал, зөвшөөрөл</a> хэсгийг харна уу.
+                                </li>
+                                <li>
+                                    ХНУМС-ийн веб сервисийн хувилбар болон өөрчлөлтийн мэдээллийг
+                                    <a href="#tag/8.-Veb-servisijn-huvilbar-rchlltijn-th">Веб сервисийн хувилбар, өөрчлөлтийн түүх</a> хэсгээс харна уу.
+                                </li>
+                                <li>
+                                    Өөрийн системийн сервер дээр Secure Sockets Layer (SSL) тохиргоог идэвхжүүлэх шаардлагатай.
+                                    Энэ талаар тусламж авах бол өөрийн системийн админтай холбогдоно уу.
+                                </li>
+                                <li>
+                                    <a href="#WorkWithWebService">Веб сервистэй ажиллах</a> болон <a href="#DataModel">Веб сервисийн бүтэц, загвар</a>
+                                    хэсгээс үндсэн гол ойлголтуудыг, хэрхэн ашиглах нөхцлийг болон бүтэц зохион байгуулалтыг шалгаарай.
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <br>
+                            <h3>Жишээ</h3>
+                            <p>
+                                REST веб сервис клиент тохируулсны дараа та жишээ хүсэлт илгээж өөрийнхөө холболтыг ажиллаж байгаа эсэхийг
+                                шалгаж болно.
+                                Жишээ нь: Хэрэв та Ажилтны мэдээллийг авах хялбар GET хүсэлт илгээх бол дараах хэлбэртэй байна.
+                            </p>
+                            <br>
+                            <h4>Request</h4>
+                            <pre>
+                                    <code>GET
+                                    https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030
+                                    &lt;host&gt;:&lt;port&gt;: your_organization.com:&lt;port&gt;
+                                    Authorization: Basic</code>
+                                </pre>
+                            <br>
+                            <h4>Response</h4>
+                            <p>
+                                Хэрэв хүсэлт амжилттай бол, веб сервисийн төлвийн код 200 болон
+                                response body буцаана.
+                            </p>
+                            <pre>
+                                    <code>HTTP/1.1: 200 OK
+                                    {
+                                    "WorkerCode" : "WKR000132",
+                                    "FirstName" : "Bayaraa",
+                                    "MiddleName" : null,
+                                    "LastName" : "Basan",
+                                    "PreviousLastName" : null,
+                                    "NameSuffix" : null,
+                                    ...,
+                                    "links" : [ {
+                                        "rel" : "self",
+                                    ...
+                                    } ]
+                                    }</code>
+                                </pre>
+                        </div>
+        '
+    -
+        name: 2. Нууцлал, зөвшөөрөл
+        description: '
+                        <p>
+                            REST веб сервис нь нууцлагдсан болон шифрлэгдсэн мэдээлэл эсэхийг баталгаажуулах
+                            сервер талын нууцлалын дараах бодлогыг(Security Policy) ашигладаг:
+                        </p>
+                        <code>multi_token_over_ssl_rest_service_policy</code>
+                        <p>
+                            Энэ нууцлалын бодлого (Security Policy) нь хандалт баталгаажуулалт болон токенд суурилсан механизмыг
+                            ашиглана.
+                        </p>
+                        <div>
+                            <ul>
+                                <li><span>Basic authentication over SSL</span>: Хэрэглэгчийн эрх болон нууц үгийг HTTP header-ээс
+                                    задлана.</li>
+                                <li><span>SAML 2.0 Bearer token in the HTTP header over SSL</span>: SAML 2.0 Bearer assertion-ийг
+                                    HTTP header-ээс задлана.</li>
+                                <li><span>JWT token in the HTTP header over SSL</span>: Хэрэглэгчийн нэрийг HTTP header дээрх JWT
+                                    token-оос задлана.</li>
+                            </ul>
+                        </div>
+                        <br>
+                        <h3>REST веб сервисрүү хандах</h3>
+                        <div>
+                            <p>REST веб сервисрүү хандахдаа дараах алхмуудыг тодруулна:</p>
+                            <ol>
+                                <li>
+                                    Веб сервисийн хувилбар. Өөрийн системийн админтай холбогдоно уу.</li>
+                                <li>
+                                    Шаардлагатай эрх, зөвшөөрөлийг авах. Өөрийн системийн админтай холбогдоно уу.</li>
+                                <li>
+                                    REST веб сервисрүү хандах хэрэгсэл сонгох. Мэдээлэл солилцох протокол дэмждэг програмын платформ
+                                    эсвэл интернет хандалтат програм ашиглах.
+                                </li>
+                                <li>
+                                    Веб сервисийн нөөцрүү хандах хүсэлтийг бүтэцлэх.
+                                    <p>
+                                        Веб сервисийн нөөцрүү хандах зам дараах хэлбэртэй байна:
+                                    </p>
+                                    <p>
+                                        <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/&lt;version&gt;/&lt;resourcename&gt;
+                                                    </code>
+                                    </p>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <code>host:port
+                                                            </code>
+                                                нь серверийн хост нэр болон портыг заана.
+                                            </li>
+                                            <li>
+                                                <code>version</code> нь Веб
+                                                сервисийн хувилбарыг заана.
+                                            </li>
+                                            <li>
+                                                <code>resourcename</code>
+                                                нь веб сервисийн нөөцийг заана.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <h5>Жишээ URL</h5>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/departments</code>
+                                            </li>
+                                            <li>
+                                                <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees</code>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5>Жишээ cURL комманд:</h5>
+                                    <code>curl -i -u &lt;username&gt;:&lt;password&gt; -X GET https://&lt;server&gt;:&lt;port&gt;/api/rest/&lt;version&gt;/departments</code>
+                                    <code>curl -u &lt;username&gt;:&lt;password&gt; -X POST -d request_body https://&lt;server&gt;:&lt;port&gt;/api/rest/&lt;version&gt;/employees</code>
+
+                                    <ul>
+                                        <li>
+                                            <code>username:password</code>
+                                            нь веб сервисрүү хандах хэрэглэгчийн нэр болон нууц үг.</li>
+                                        <li>
+                                            <code>server:port</code>
+                                            нь веб сервисийг агуулж байгаа серверийн хост болон порт.</li>
+                                        <li>
+                                            <code>version</code> нь веб сервисийн хувилбар.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <br>
+                            <div>
+                                <h3>Шаардлагатай роль болон зөвшөөрөл</h3>
+                                <p>
+                                    Веб сервисийг ашиглахдаа функциональ нууцлалын зөвшөөрөл болон дата нууцлалын
+                                    зөвшөөрөлтэй байх ёстой.
+                                    Функциональ нууцлалын зөвшөөрөл нь ямар нөөцрүү хандаж, ямар үйлдэл хийхийг заадаг бол
+                                    дата нууцлалын зөвшөөрөл нь
+                                    тухайн нөөц дээр үйлдэл хийхдээ хэр хэмжээний дата руу хандах эрхийг тодорхойлно.
+                                </p>
+                            </div>
+        '
+    -
+        name: 3. Веб сервисийн нөөц
+        description: '
+                        <p>
+                            Веб сервисийн нөөц нь төрөлтэй, мэдээлэлтэй ба бусад нөөцтэй холбогдсон холбоостой байна.
+                            Мөн та веб сервисийн нөөцрүү хандахдаа веб сервисийн үйлдлүүдийг ашиглаж болно.
+                            REST веб сервисийн нөөц нь JavaScript Object Notation (JSON) форматаар илэрхийлэгдэнэ.
+                            Нөөцийн бүтцийг шахахдаа дараах аргыг ашиглаж болно:
+                        </p>
+                        <div>
+                            <ul>
+                                <li>
+                                    <code>x-gzip/gzipe</code>:
+                                    RFC 1952-д тодорхойлсон GNU zip програм ашиглан мэдээллийг шахна.
+                                    Энэ формат нь 32-bit Cycle Redundancy Check (CRC)-тай Lempel-Ziv coding (LZ77)-ийг ашиглана.
+                                </li>
+                                <li>
+                                    <code>Deflate</code>: RFC 1950 болон RFC 1951-д тодорхойлсон zlib форматар шахна.
+                                </li>
+                            </ul>
+                            <br>
+                            <p>REST веб сервисийн нөөцийг дараах байдлаар ангилна:</p>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#tag/Ncijn-trl">Сингулар нөөц (Singular Resource)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tag/Ncijn-trl">Коллекшн нөөц (Collection Resource)</a>
+                                    </li>
+                                </ul>
+                                <br>
+                                <h2>Сингулар нөөц (Singular Resource)</h2>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <p>
+                                                Сингилар нөөц нь нэг Ажилтан, нэг хичээл, ... зэрэг объектын нэг бичлэгийг илэрхийлнэ.
+                                                Энэ дараах шинж чанартай байна:
+                                            </p>
+                                            <div>
+                                                <ul>
+                                                    <li>Аттрибут (багана)-ны жагсаалт агуулна.</li>
+                                                    <li>Харъяалагдах нөөцийг агуулна. Жишээ нь нэг Ажилтан олон утасны дугаартай байж болно.
+                                                    </li>
+                                                    <li>Бусад холбоотой нөөцрүү хандах линк шинж чанарыг агуулна.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <h3>Жишээ нь:</h3>
+                                            <div>
+                                                <ul>
+                                                    <li>Ажилтан нөөц нь Ажилтны
+                                                        код, Ажилтны нэр,
+                                                        суралцаж байгаа хөтөлбөр, зэрэг баганы мэдээлэлтэй байна.
+                                                    </li>
+                                                    <li>
+                                                        Мөн Ажилтан нөөц нь тухайн Ажилтны утасны дугаар, мэйл хаяг, ... гэх мэт
+                                                        харъяалагдах нөөцрүү хандах линктэй байна.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <pre>
+                                                    <code>{
+                                                            "WorkerCode" : "WKR04584093521",
+                                                            "FirstName" : "Bayaraa",
+                                                            "MiddleName" : null,
+                                                            "LastName" : "Basan",
+                                                            ...,
+                                                            "links" : [ {
+                                                                "rel" : "self",
+                                                                "href" : "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030",
+                                                                "name" : "employees",
+                                                                "kind" : "item",
+                                                            ...
+                                                            } ]
+                                                            }
+                                                    </code>
+                                                </pre>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <h3>Линк объект</h3>
+                                            <p>
+                                                Линк объект нь дараах шинж чанартай байна:
+                                            </p>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <code>rel</code>: Харъяалах нөөцтэй ямар холбоотойг заана. Энэ нь дараах төрөлтэй байна:
+                                                        <ul>
+                                                            <li><code>rel="self"</code>: Тухайн сонгогдсон нөөцрүү хандах линк.</li>
+                                                            <li><code>rel="canonical"</code>: Тухайн нөөцийн оргиналь линк.</li>
+                                                            <li><code>rel="child"</code>: Харъяалагдах нөөцийн линк.</li>
+                                                            <li><code>rel="lov"</code>: Ангилалтай баганы ангилалд хандах линк.</li>
+                                                            <li><code>rel="parent"</code>: Харъяалах нөөцийн линк.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><code>href</code>: Холбоотой нөөцрүү хандах URL зам.</li>
+                                                    <li><code>name</code>: Линкний нэр.</li>
+                                                    <li><code>kind</code>: Холбоотой нөөцийн ангилалыг заана. Боломжит утга нь
+                                                        <code>collection</code> and<code>item</code> байна.</li>
+                                                    <li><code>properties</code>: Холбоотой нөөцийн нэмэлт шинж чанар.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <h3>Линк ашигласан жишээ:</h3>
+                                            <div>
+                                                <ul>
+                                                    <li>Ажилтан нөөцийн <code>self</code>
+                                                        төрлийн линк
+                                                        <div>
+                                                            <pre>
+                                                                <code>{
+                                                                    "WorkerCode" : "WKR382901529035",
+                                                                    "FirstName" : "Bayaraa",
+                                                                    "MiddleName" : null,
+                                                                    ...
+                                                                    "links" : [ {
+                                                                        "rel" : "self",
+                                                                        "href" : "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030",
+                                                                        "name" : "employees",
+                                                                        "kind" : "item",
+                                                                        "properties" : {
+                                                                        "changeIndicator" : "ACED0005737200136A6176612EE000878"
+                                                                            }
+                                                                        ...
+                                                                    } ]
+                                                                    }
+                                                                </code>
+                                                            </pre>
+                                                        </div>
+                                                    </li>
+                                                    <li>Ажилтан нөөцийн <code>lov</code> төрлийн линк
+                                                        <div>
+                                                            <pre>
+                                                                <code>{
+                                                                        "WorkerCode" : "WKR382901529035",
+                                                                        "FirstName" : "Bayaraa",
+                                                                        "MiddleName" : null,
+                                                                        ...
+                                                                        "links" : [{
+                                                                            ...
+                                                                                {
+                                                                                    "rel" : "lov",
+                                                                                    "href" : "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030/lov/RegularTemporaryLOV",
+                                                                                    "name" : "RegularTemporaryLOV",
+                                                                                    "kind" : "collection"
+                                                                                }
+                                                                            }]
+                                                                        }
+                                                                </code>
+                                                            </pre>
+                                                        </div>
+                                                    </li>
+                                                    <li>Ажилтан нөөцийн <code>child</code> төрлийн линк
+                                                        <div>
+                                                            <pre>
+                                                                <code>{
+                                                                        "WorkerCode" : "WKR382901529035",
+                                                                        "FirstName" : "Bayaraa",
+                                                                        "MiddleName" : null,
+                                                                        ...
+                                                                        "links" : [{
+                                                                            ...
+                                                                                {
+                                                                                    "rel" : "child",
+                                                                                    "href" : "http://&lt;host&gt;::&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030/child/phones",
+                                                                                    "name" : "phones",
+                                                                                    "kind" : "collection"
+                                                                            }
+                                                                            }]
+                                                                        }
+                                                                </code>
+                                                            </pre>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <br>
+                                                <h2>Коллекшн нөөц (Collection Resource)</h2>
+                                                <div>
+                                                    <div>
+                                                        <div>
+                                                            <p>Коллекшн нөөц нь тухайн объектын жагсаалтаар илэрхийлэгдэнэ. Жишээ нь:
+                                                                Ажилтны жагсаалт, Хичээлийн жагсаалт, ...гэх мэт.
+                                                                Коллекшн нөөц нь дараах шинж чанартай байна:
+                                                            </p>
+                                                            <div>
+                                                                <ul>
+                                                                    <li>Ижил төрлийн сингулар нөөцийн массив агуулна.
+                                                                    </li>
+                                                                    <li><code>links</code>-ийг ашиглан сингулар нөөцөөр өргөтгөдөг.
+                                                                    </li>
+                                                                    <li>Жагсаалтын утга авахдаа хуудаслаж авах боломжтой.
+                                                                    </li>
+                                                                    <li>
+                                                                        Харъяалах нөөц болон харъяалагдах нөөцийг ашиглах боломжтой.
+                                                                    </li>
+                                                                    <li>Клиент <code>orderBy</code> параметрийг ашиглан коллекшн нөөцийг ордер
+                                                                        хийх боломжтой.
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <p>Коллекшн нөөцийн бүтэц дараах хэлбэртэй байна:</p>
+                                                            <div>
+                                                                <ul>
+                                                                    <li>
+                                                                        <code>items</code>: Коллекшн нөөцөд агуулагдах сингулар нөөцийн
+                                                                        массивийг агуулна.
+                                                                    </li>
+                                                                    <li><code>hasMore</code>: Boolean төрлийн утга ба сервер дээр өөр сингулар
+                                                                        нөөц байгаа эсэхийг тодорхойлно.
+                                                                        Боломжит утга нь:
+                                                                        <ul>
+                                                                            <li><code>True</code> Сервер дээр татаж авсан нөөцөөс гадна өөр
+                                                                                сингулар нөөц байгааг илэрхийлнэ.</li>
+                                                                            <li><code>False</code> Сервер дээр татаж авсан нөөцөөс гадна өөр
+                                                                                сингулар нөөц байхгүйг илэрхийлнэ.</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li><code>totalResults</code>:
+                                                                        Тоо төрлийн утга ба сервер дээрх тухайн коллекшн нөөцөд байгаа сингулар
+                                                                        нөөцийн тоог заана.
+                                                                    </li>
+                                                                    <li><code>limit</code>:
+                                                                        Тоон төрлийн утга ба нэг хүсэлтэд хичнээн сингулар нөөц авах хязгаарын
+                                                                        тоог заана.
+                                                                        Үндсэн утга нь 25 байна.
+                                                                    </li>
+                                                                    <li><code>count</code>:
+                                                                        Тоо төрлийн утга ба нэг хүсэлтээр хуудаслаж авах сингулар нөөцийн тоог
+                                                                        заана.
+                                                                    </li>
+                                                                    <li><code>offset</code>:
+                                                                        Тоо төрлийн утга ба хуудаслалт эхлэх дугаарыг илэрхийлнэ. Үндсэн утга нь
+                                                                        0 байна.
+                                                                        Жишээ нь:
+                                                                        <ul>
+                                                                            <li>Хэрэв <code>offset=0</code> бол,
+                                                                                Тухайн коллекшн нөөцийн эхний сингулар нөөцөөс эхлэн бүх нөөцийг
+                                                                                авна.
+                                                                            </li>
+                                                                            <li>Хэрэв <code>offset=10 and count=20</code> бол,
+                                                                                11-ээс 30 хүртлэх сингулар нөөцийг авна.
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h3>Жишээ</h3>
+                                                            <div>
+                                                                <ul>
+                                                                    <li>
+                                                                        Энэ жишээ нь Ажилтны коллекшн нөөцийг харуулна.
+                                                                        <code>items</code> worker төрлийн сингулар нөөцийн массив агуулна.
+                                                                        <div>
+                                                                            <pre>
+                                                                                <code>{
+                                                                                        "items" : [ 
+                                                                                            {
+                                                                                                "FirstName" : "Bayaraa",
+                                                                                                "LastName" : "Basan",
+                                                                                                "DisplayName" : "Bayaraa Basan",
+                                                                                            ...
+                                                                                            "links" : [{
+                                                                                                ...
+                                                                                                    {
+                                                                                                        "rel" : "child",
+                                                                                                        "href" : "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030/child/phones",
+                                                                                                        "name" : "phones",
+                                                                                                        "kind" : "collection"
+                                                                                                }
+                                                                                                }]
+                                                                                            }, 
+                                                                                            {
+                                                                                                "FirstName" : "Battulga",
+                                                                                                "LastName" : "Lkhamaa",
+                                                                                                "DisplayName" : "Battulga Lkhamaa",
+                                                                                                ...
+                                                                                            }, 
+                                                                                            {
+                                                                                                "FirstName" : "Lkhagvasuren",
+                                                                                                "LastName" : "B",
+                                                                                                "DisplayName" : "Lkhagvasuren B",
+                                                                                                ...
+                                                                                            }],
+                                                                                        "count" : 4,
+                                                                                        "hasMore" : true,
+                                                                                        ...
+                                                                                        }
+                                                                                </code>
+                                                                            </pre>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        Энэ жишээн дээр коллекшн нөөцийн баганы мэдээлэл ба шинж чанарыг
+                                                                        агуулсан байна.
+                                                                        <div>
+                                                                            <pre>
+                                                                                <code>{
+                                                                                        "items" : [ {
+                                                                                            "FirstName" : "Bayaraa",
+                                                                                            "LastName" : "Basan",
+                                                                                            "DisplayName" : "Bayaraa Basan"
+                                                                                        }, {
+                                                                                            "FirstName" : "Battulga",
+                                                                                            "LastName" : "Lkhamaa",
+                                                                                            "DisplayName" : "Battulga Lkhamaa"
+                                                                                        },
+                                                                                        .....
+                                                                                        ],
+                                                                                        "totalResults" : 9,
+                                                                                        "count" : 6,
+                                                                                        "hasMore" : true,
+                                                                                        "limit" : 6,
+                                                                                        "offset" : 0,
+                                                                                        "links" : [ {
+                                                                                        "rel" : "self">,
+                                                                                        "href" : "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees",
+                                                                                        "name" : "employees",
+                                                                                        "kind" : "collection"
+                                                                                        } ]
+                                                                                        }
+                                                                                </code>
+                                                                            </pre>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        '
+    -
+        name: 4. Веб сервисийн үйлдэл
+        description: '
+                        <p>
+                            REST веб сервисийн нөөц дээр дараах стандарт үйлдлүүдийг (HTTP methods) ашиглана.
+                        </p>
+                        <div>
+                            <ul>
+                                <li><a href="#tag/Ncijn-jldel">GET</a></li>
+                                <li><a href="#tag/Ncijn-jldel">POST</a></li>
+                                <li><a href="#tag/Ncijn-jldel">PATCH</a></li>
+                                <li><a href="#tag/Ncijn-jldel">DELETE</a></li>
+                            </ul>
+                            <br>
+                            <h2>GET</h2>
+                            <div>
+                                <div>
+                                    <div>
+                                        <p>GET үйлдлийг сингулар болон коллекшн нөөцийн мэдээллийг авахад (унших) ашиглагдана.</p>
+                                    </div>
+                                    <div>
+                                        <br>
+                                        <h3>Коллекшн нөөц (Collection Resource)</h3>
+                                        <p>Коллекшн нөөцийн мэдээллийг авахдаа GET хүсэлтийг дараах жишээний дагуу явуулна.
+                                            </p>
+                                        <br>
+                                        <h4>Request</h4>
+                                        <div>
+                                            <pre>
+                                                <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees</code>
+                                            </pre>
+                                        </div>
+                                        <br>
+                                        <h4>Response</h4>
+                                        <p>JSON форматтай дата нь <code>items</code> хэсэгт массив хэлбэрээр агуулагдана.
+                                        Хэрэв мэдээлэл олгохгүй бол хоосон массив буцаана.
+                                        </p>
+                                        <div>
+                                            <pre>
+                                                <code>
+                                                    HTTP/1.1: 200 OK
+
+                                                    {
+                                                    "items" : [ {
+                                                        "WorkerCode" : "WKR3902158721058",
+                                                        "FirstName" : "Terry",
+                                                        "MiddleName" : null,
+                                                        "LastName" : "Green",
+                                                        "PreviousLastName" : null,
+                                                        "NameSuffix" : null,
+                                                        "DisplayName" : "Terry Green",
+                                                        "PreferredName" : null,
+                                                        "Honors" : null,
+                                                        ...
+                                                        "links" : [ {
+                                                        "rel" : "self",
+                                                        ..
+                                                        },
+                                                    ..
+                                                    }, 
+                                                    ...
+                                                    } ],
+                                                    "count" : 25,
+                                                    "hasMore" : true,
+                                                    "limit" : 25,
+                                                    "offset" : 0,
+                                                    "links" : [ {
+                                                        "rel" : "self",
+                                                        ..
+                                                    } ]
+                                                </code>
+                                            </pre>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <br>
+                                        <h3>Сингулар нөөц (Singular Resource)</h3>
+                                        <p>Сингулар нөөцийн мэдээллийг авахдаа GET хүсэлтийг давхцахгүй түлхүүрийг ашиглан дараах жишээний дагуу явуулна.
+                                        </p>
+                                        <br>
+                                        <h4>Request</h4>
+                                        <div>
+                                            <pre>
+                                                <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030</code>
+                                            </pre>
+                                        </div>
+                                        <br>
+                                        <h4>Response</h4>
+                                        <p>
+                                            Сервер буцааж байгаа дата нь нэг объектын JSON хэлбэртэй байна.
+                                        </p>
+                                        <div>
+                                            <pre>
+                                                <code>
+                                                    HTTP/1.1: 200 OK
+
+                                                    {
+                                                    "WorkerCode" : "WKR342589074398257",
+                                                    "FirstName" : "Terry",
+                                                    "MiddleName" : null,
+                                                    "LastName" : "Green",
+                                                    "PreviousLastName" : null,
+                                                    "NameSuffix" : null,
+                                                    ...,
+                                                    "links" : [ {
+                                                        "rel" : "self",
+                                                    ...
+                                                    } ]
+                                                    }
+                                                </code>
+                                            </pre>
+                                            <br>
+                                            <h2>POST</h2>
+                                            <div>
+                                                <div>
+                                                    <div>
+                                                        <p>POST үйлдлийг коллекшн нөөц дээр шинэ сингулар нөөц нэмэхэд ашиглана. Ашиглахдаа:
+                                                        </p>
+                                                        <div>
+                                                            <ul>
+                                                                <li>
+                                                                Коллекшн нөөцийн URL дээр POST хүсэлт ажиллуулах.
+                                                                </li>
+                                                                <li>
+                                                                    Request header дээр <code>Content-Type</code>-ийг <kbd>application/json</kbd> төрлөөр тохируулах.
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <p>Дараах жишээ дээр фото зургийн датаг base64-encoded төрлөөр коллешн нөөц дээр нэмэх.
+                                                        </p>
+                                                        <br>
+                                                        <h4>Request</h4>
+                                                        <p>Хүсэлт илгээхэд сингулар нөөцөөр мэдээллээ request body дээр давмжуулна.
+                                                        </p>
+                                                        <div>
+                                                            <pre>
+                                                                <code>POST https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo</code> Content-Type: application/json
+                                                                
+                                                                {
+                                                                "ImageName" : "ProfilePhoto",
+                                                                "PrimaryFlag" : "Y",
+                                                                "Image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAqERilSpVRZ//Z"
+                                                                }
+                                                                </code>
+                                                            </pre>
+                                                        </div>
+                                                        <br>
+                                                        <h4>Response</h4>
+                                                        <p>Сервер шинэ зургийг үүсгээд төлвийн кодыг 201 болон response header дээр Location аттрибутыг тохируулна. response body нь шинээр үүссэн зургийн мэдээллийг агуулна.
+                                                        </p>
+                                                        <div>
+                                                            <pre>
+                                                                <code>
+                                                                    HTTP/1.1 201 Created
+
+                                                                    Location: https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/44617465686A81014B597419030/child/photo/30010074409
+
+                                                                    {
+                                                                    "ImageName": "ProfilePhoto",
+                                                                    "PrimaryFlag": "Y",
+                                                                    ''
+                                                                    "links": [
+                                                                        {
+                                                                        "rel": "self",
+                                                                        ...
+                                                                        },
+                                                                        {
+                                                                        "rel": "canonical",
+                                                                        ...
+                                                                        },
+                                                                        {
+                                                                        "rel": "parent",
+                                                                        ...
+                                                                        },
+                                                                        {
+                                                                        "rel": "enclosure",
+                                                                        "href": "...",
+                                                                        "name": "Image",
+                                                                        "kind": "other"
+                                                                        }
+                                                                    ]
+                                                                    }
+                                                                </code>
+                                                            </pre>
+                                                            <br>
+                                                            <h2>PATCH</h2>
+                                                            <div>
+                                                                <div>
+                                                                    <div>
+                                                                        <p>PATCH үйлдлийг ашиглан веб сервисийн нөөцийн мэдээллийг өөрчилнө. 
+                                                                        Мөн зөвхөн request body дээр тодорхойлогдсон багануудыг өөрчлөх боломжтой.
+                                                                        </p>
+                                                                        <div>
+                                                                            <ul>
+                                                                                <li>Сингулар нөөцийн URL дээр PATCH хүсэлт ажиллуулах.
+                                                                                </li>
+                                                                                <li>Request header дээр <code>Content-Type</code>-ийг <kbd>application/json</kbd> төрлөөр тохируулах.
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p>Дараах жишээ дээр Ажилтны суралцах хэлбэрийг өөрчилнө.
+                                                                        </p>
+                                                                        <br>
+                                                                        <h4>Request</h4>
+                                                                        <div>
+                                                                            <pre>
+                                                                                <code>PATCH https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/00020000000EACED000577080000000000000018</code> Content-Type: application/json
+                                                                                
+                                                                                {
+                                                                                "RegularTemporary": "REGULAR"
+                                                                                }
+                                                                                </code>
+                                                                            </pre>
+                                                                        </div>
+                                                                        <br>
+                                                                        <h4>Response</h4>
+                                                                        <p>
+                                                                        Сервер Ажилтны сургалцах хэлбэрийг өөрчилж сервисийн төлвийн код дээр 200 болон response header дээрх ETag утгыг тохируулна.
+                                                                        Response body нь тухайн сингулар нөөцийн мэдээллийг агуулна.
+                                                                        </p>
+                                                                        <div>
+                                                                            <pre>
+                                                                                <code>
+                                                                                    200 OK
+
+                                                                                    Etag: "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000001477040000"
+
+                                                                                    {
+                                                                                    
+                                                                                    
+                                                                                    (...)
+                                                                                    
+                                                                                    "MaritalStatus": "M",
+                                                                                    
+                                                                                    (...)
+                                                                                    
+                                                                                    "links": [
+                                                                                        {
+                                                                                        "rel": "self",
+                                                                                        "href": "../emps/00020000000EACED000577080000000000000",
+                                                                                        "name": "emps",
+                                                                                        "kind": "item",
+                                                                                        "properties": {
+                                                                                            "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000001477040000"
+                                                                                        }
+                                                                                        },
+                                                                                        
+                                                                                        (...)
+                                                                                    
+                                                                                    ]
+                                                                                    }
+                                                                                </code>
+                                                                            </pre>
+                                                                            <br>
+                                                                            <h2>DELETE</h2>
+                                                                            <div>
+                                                                                <div>
+                                                                                    <div>
+                                                                                        <p>DELETE үйлдлийг ашиглан сингулар нөөцийг устгана. 
+                                                                                        Request body -д утга шаардлагагүй.
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <p>
+                                                                                        Сингулар нөөцийн URL дээр DELETE хүсэлтийг ажиллуулна.
+                                                                                        Доорх жишээ дээр тухайн Ажилтны фото зургийг устгах үйлдэл хийнэ.
+                                                                                        </p>
+                                                                                        <br>
+                                                                                        <h4>Request</h4>
+                                                                                        <div>
+                                                                                            <pre>
+                                                                                                <code>DELETE https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo/300100074710030</code>
+                                                                                            </pre>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <h4>Response</h4>
+                                                                                        <p>
+                                                                                        Сервер Ажилтны фото зургийг устгах ба веб сервисийн төлвийг 204 кодоор тохируулна.
+                                                                                        </p>
+                                                                                        <div>
+                                                                                            <pre>
+                                                                                                <code>204 No Content</code>
+                                                                                            </pre>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        '
+    -
+        name: 5. Веб сервисийн төлөв
+        description: '
+                        <p>
+                            Дараах хүснэгтээр системийн боломжит веб сервисийн төлөв (HTTP response code)-үүдийг илэрхийлж байна.
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Код</strong></td>
+                                    <td><strong>Тайлбар</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>200 OK</td>
+                                    <td>Хүсэлт амжилттай ба сервер response body буцаана.</td>
+                                </tr>
+                                <tr>
+                                    <td>201 Created</td>
+                                    <td>Нөөц амжилттай үүсэх ба сервер response body дээр тухайн нөөцийн мэдээлэл буцаана.</td>
+                                </tr>
+                                <tr>
+                                    <td>204 No Content</td>
+                                    <td>Хүсэлт амжилттай ба сервер response body буцаахгүй.</td>
+                                </tr>
+                                <tr>
+                                    <td>304 Not Modified</td>
+                                    <td>Нөөц өөрчлөгдөхгүй.</td>
+                                </tr>
+                                <tr>
+                                    <td>400 Bad Request</td>
+                                    <td>Буруу синтаксийн улмаас хүсэлт амжилтгүй.</td>
+                                </tr>
+                                <tr>
+                                    <td>401 Unauthorized</td>
+                                    <td>Хүсэлт зөвшөөрөгдөөгүй.</td>
+                                </tr>
+                                <tr>
+                                    <td>404 Not Found</td>
+                                    <td>Хүсэлтээр илгээсэн нөөц байхгүй байна.</td>
+                                </tr>
+                                <tr>
+                                    <td>406 Not Acceptable</td>
+                                    <td>Нөөц нь accept header дээрх форматын дагуу response entities-ийг үүсгэж чадахгүй байна.</td>
+                                </tr>
+                                <tr>
+                                    <td>412 Precondition failed</td>
+                                    <td>ETag дээр тодорхойлогдсон нөөцийн төлөв сервер дээрх төлөвтэй таарахгүй байна.</td>
+                                </tr>
+                                <tr>
+                                    <td>415 Unsupported Media Type</td>
+                                    <td>Серверийн дэмждэггүй медиа төрөл байна.</td>
+                                </tr>
+                                <tr>
+                                    <td>500 Internal Server Error</td>
+                                    <td>Сервер дээр алдаа гарлаа.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+        '
+    -
+        name: 6. Өгөгдлийн төрөл
+        description: '
+                        <p>
+                            Дараах хүснэгтээр системийн боломжит өгөгдлийн төрлийг харуулж байна.
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Өгөгдлийн төрөл</strong></td>
+                                    <td><strong>Тайлбар</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>JSON string төрөл нь C болон Жава хэлэн дээрх string төрөлтэй адилхан.
+                                        <code>date</code> болон <code>datetime</code> төрөл нь ISO 8501 форматын дагуу string төрлөөр
+                                        илэрхийлэгдэнэ.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>boolean</td>
+                                    <td>JSON boolean төрөл.</td>
+                                </tr>
+                                <tr>
+                                    <td>number</td>
+                                    <td>JSON number төрөл. Энэ дата төрөл нь наймт болон арван зургаатын форматыг агуулаагүй.</td>
+                                </tr>
+                                <tr>
+                                    <td>integer</td>
+                                    <td>Бутархай оронгүй JSON number төрөл.</td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>JSON null төрөл.</td>
+                                </tr>
+                                <tr>
+                                    <td>object</td>
+                                    <td>JSON object нь unordered <code>name</code> ба <code>value</code>-ийн хослолын багц байна.
+                                        <code>name</code> нь string төрөл, <code>value</code> нь string,
+                                        number, boolean, null, object, эсвэл array төрөл байж болно.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>JSON array төрөл нь ordered <code>values</code>-ын жагсаалт байна.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+        '
+    -
+        name: 7. Нэр томъёо
+        description: '
+                        <p>Энэ баримт бичиг дээр REST веб сервисийн дараах нэр томъёог ашиглана:</p>
+                        <ul>
+                            <li><span><strong>Нөөц (Resource)</strong></span>:
+                                Веб сервисийн нөөц нь төрөлтэй, мэдээлэлтэй ба бусад нөөцтэй холбогдсон холбоостой байна.
+                                Мөн та веб сервисийн нөөцрүү хандахдаа веб сервисийн үйлдлүүдийг ашиглаж болно.
+                            </li>
+                            <li><span><strong>Сингулар нөөц (Singular Resource)</strong></span>:
+                                Сингулар нөөц нь нэг Ажилтан, нэг хичээл, ... гэх мэт тухайн нөөцийн нэг бичлэгийг илэрхийлнэ.</li>
+                            <li><span><strong>Коллекшн нөөц (Collection Resource)</strong></span>:
+                                Коллекшн нөөц нь тухайн нөөцийн жагсаалтыг тодорхойлно. Жишээ нь: Ажилтны жагсаалт, Хичээлийн жагсаалт, ...
+                                гэх мэт.</li>
+                            <li><span><strong>Харъяалах нөөц (Root Resource)</strong></span>:
+                                Харъяалах нөөц нь дэд нөөцүүдийг агуулдаг нөөцийг ойлгоно. Энэ нөөц нь заавал дэд нөөцийг агуулах
+                                шаардлагагүй.
+                            </li>
+                            <li><span><strong>Харъяалагдах нөөц (Subresource)</strong></span>:
+                                Энэ нөөц нь ямар нэг эцэг нөөцтэй байна. Жишээ нь: утасны дугаар, хөтөлбөр, зураг, ... зэрэг нөөц нь Ажилтан
+                                нөөцөд харъяалагдах дэд нөөц юм.
+                            </li>
+                            <li><span><strong>Ангилал төрлийн нөөц (LOV Resource)</strong></span>:
+                                Ангилал төрлийн нөөц нь багана дээр сонголтоор гарах утгын жагсаалтыг хангах шаардлагатай. Ангилал төрлийн нөөц
+                                нь дараах хоёр төрөлтэй:
+                                <ul>
+                                    <li><span><strong>Статик ангилал (Lookup)</strong></span>:
+                                        Богино хэмжээний статик жагсаалт нь энэ төрлийн нөөцөд орно. Жишээ нь: Ажилтны мэдээлэл нь суралцах
+                                        хэлбэр <code>RegularTemporary</code> баганыг агуулдаг.
+                                        Харин энэ багана дээр Өдрийн сургалт, оройн сургалт, ... гэх мэт статик ангилал ашиглана.
+                                    </li>
+                                    <li><span><strong>Динамик ангилал (Dynamic)</strong></span>:
+                                        Утгын жагсаалт нь тухайн нөөцийн контекстын өөрчлөлтөөс хамаардаг. Жишээ нь: Ажилтны элссэн
+                                        хичээлийн сонголт нь динамикаар нэмэгддэг.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+        '
+
+
+

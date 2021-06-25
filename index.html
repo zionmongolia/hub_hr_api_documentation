@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HCM | Developer</title>
+  <!-- needed for adaptive design -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+
+  <style>
+    @import url(//fonts.googleapis.com/css?family=Roboto:400,700);
+
+    body {
+      margin: 0;
+      padding-top: 40px;
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+
+    #redoc_container .menu-content img {
+      padding: 20px 30px 14px 30px;
+    }
+
+    nav {
+      margin: 0;
+      padding: 0;
+      background-color: #191919;
+      height: 40px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      align-items: center;
+    }
+
+    #links_container {
+      margin: 0;
+      padding: 0;
+      height: 40px;
+      z-index: 5;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      font-size: 12px;
+      font-weight: 300;
+    }
+
+    #links_container li {
+      display: inline-block;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #menu_container {
+      margin: 0;
+      padding: 0;
+      height: 40px;
+      z-index: 5;
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+
+    #menu_container li {
+      text-decoration: none;
+      box-sizing: border-box;
+      list-style: none;
+      display: inline-block;
+      padding: 10px;
+      color:  #fff;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <ul id="menu_container">
+      <li>ХҮНИЙ НӨӨЦИЙН СИСТЕМ | Веб сервис</li>
+    </ul>
+    <ul id="links_container">
+    </ul>
+  </nav>
+
+  <redoc scroll-y-offset="body > nav" hideDownloadButton hideLoading></redoc>
+
+  <script src="./doc.js"> </script>
+
+  <script>
+    // list of APIS
+    var apis = [
+      {
+        name: 'Ерөнхий мэдээлэл',
+        url: './general/general_info.yaml'
+      },
+      {
+        name: 'Веб сервистэй ажиллах',
+        url: './general/how_to_work.yaml'
+      },
+      {
+        name: 'v1.0.0',
+        url: './1.0.0/api.yaml'
+      },
+      {
+        name: 'v2.0',
+        url: './2.0/api.yaml'
+      }
+    ];
+    // initially render first API
+    Redoc.init(apis[0].url);
+    function onClick() {
+      var url = this.getAttribute('data-link');
+      Redoc.init(url);
+    }
+    // dynamically building navigation items
+    var $list = document.getElementById('links_container');
+    apis.forEach(function (api) {
+      var $listitem = document.createElement('li');
+      $listitem.setAttribute('data-link', api.url);
+      $listitem.innerText = api.name;
+      $listitem.addEventListener('click', onClick);
+      $list.appendChild($listitem);
+    });
+  </script>
+
+</body>
+
+</html>

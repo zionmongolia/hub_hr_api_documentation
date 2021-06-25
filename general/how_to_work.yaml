@@ -1,0 +1,1145 @@
+swagger: '2.0'
+info:
+    title: 'Хүний нөөцийн системийн веб сервис'
+    description: '
+        <p>
+        <strong>Хүний нөөцийн систем</strong>ийн веб сервисийг RESTful API хэлбэрээр тодорхойлсон 
+        энэхүү баримт бичгийн дагуу стандартыг баримтлан интеграци хийх боломжтой.
+        </p>
+        <p>Веб сервисийн гарын авлагын ерөнхий цэснээс:</p>
+        <ul>
+            <li><a href="#">Ерөнхий мэдээлэл</a> хэсгээс веб сервисийн ойлголт, хэрхэн ашиглах,... зэрэг мэдээлэл.</li>
+            <li><a href="#">Веб сервистэй ажиллах</a> хэсгээс ХНУМС-ийн веб сервистэй ажиллах дэлгэрэнгүй мэдээлэл.</li>
+            <li><a href="#">v1.0.0</a> хэсгээс веб сервисийн 1.0.0 хувилбарын бүтэц болон дэлгэрэнгүй мэдээллийг авна.</li>
+            <li><a href="#">v2.0</a> хэсгээс веб сервисийн 2.0 хувилбарын бүтэц болон дэлгэрэнгүй мэдээллийг авна.</li>
+        </ul>
+        <br><br><br>
+        <h2 id="GeneralInformation">ВЕБ СЕРВИСТЭЙ АЖИЛЛАХ</h2>
+        <p>
+            Веб сервистэй ажиллах хэсэгт веб сервисийн метадататай ажиллах, сингулар нөөц болон коллекшн нөөцтэй ажиллах
+                мөн хэрхэн тест хийх талаарх мэдээлэл агуулагдсан.
+        </p>
+        '
+    x-logo:
+      url: './logo.jpg'
+      backgroundColor: '#4067C6'
+
+    contact:
+        name: Веб сервисийн тусламж
+        url: 'https://hr.csc.gov.mn/doc'
+        email: support@csc.gov.mn
+host: hr.csc.gov.mn
+basePath: /api/rest/1.0.0
+schemes:
+    - https
+x-tagGroups:
+    -
+      name: ВЕБ СЕРВИСТЭЙ АЖИЛЛАХ
+      tags:
+        - Метадататай ажиллах
+        - Сингулар нөөцтэй ажиллах
+        - Коллекшн нөөцтэй ажиллах
+        - Веб сервис тестлэх
+tags:
+    -
+        name: Метадататай ажиллах
+        description: '
+                        <div>
+                            <p><code>describe</code>-ийг ашиглан сингулар болон коллекшн нөөцийн метадата бүтцийн мэдээллийг авч болно. Үүнд:</p>
+                            <div>
+                                <ul>
+                                    <li>Нөөцийн аттрибут (багана)-ны жагсаалт</li>
+                                    <li>Нөөцийн харъяалагдах дэд нөөц болон түүний аттрибут (багана), линкийн жагсаалт</li>
+                                    <li>Хайлтын нөхцөл (Finder) болон түүний аттрибут (багана)-ны мэдээлэл</li>
+                                    <li>Ангилал төрлийн нөөц (LOV) болон түүний аттрибут (багана)-ны мэдээлэл</li>
+                                    <li>Тухайн нөөц дээрх боломжит үйлдлүүдийн жагсаалт</li>
+                                </ul>
+                            </div>
+                            <p>Веб сервисийн метадатаны мэдээллийг GET үйлдэл ашиглана дараах форматаар авна.
+                            </p>
+                            <div>
+                                <pre>
+                                    <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/&lt;version&gt;/&lt;resource&gt;/describe</code>
+                                </pre>
+                            </div>
+                        </div>
+                        <div>
+                            <br>
+                            <h3>Жишээ нь</h3>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <p>Бүх мэдээллийг авах бол:</p>
+                                        <div>
+                                            <pre>
+                                                <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/describe?expand=all Content-Type: application/json</code></pre>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p>Зөвхөн <span>employees</span> нөөцийн мэдээллийг авах бол:</p>
+                                        <div>
+                                            <pre>
+                                                <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/describe Content-Type: application/json</code></pre>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p>Зөвхөн <span>courses</span> нөөцийн мэдээллийг авах бол:</p>
+                                        <div>
+                                            <pre>
+                                                <code>GET https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/courses/describe Content-Type: application/json</code>
+                                            </pre>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                            <p>Дараах жишээ дээр <span>emps</span> нөөцийн метадата мэдээллийг харуулж байна.</p>
+                            <p><img title="Аттриубут (Багана)-ны мэдээлэл" src="./EmpDescAttr.png" alt="Аттриубут (Багана)-ны мэдээлэл" />
+                            </p>
+                            <p><img title="Ангилал (LOV) нөөцийн мэдээлэл" src="./EmpDescLOV.png" alt="Ангилал (LOV) нөөцийн мэдээлэл" />
+                            </p>
+                            <p><img title="Хайлтын нөхцөл (Finder)-ийн мэдээлэл" src="./EmpDescFind.png"
+                                    alt="Хайлтын нөхцөл (Finder)-ийн мэдээлэл" />
+                            </p>
+                        </div>
+        '
+    -
+        name: Коллекшн нөөцтэй ажиллах
+        description: '
+                        <div>
+                            <p>
+                                Энэ хэсэгт коллекшн нөөц дээр хийгдэх үйлдлүүдийн дэлгэрэнгүй мэдээллийг агуулна.
+                            </p>
+                            <ul>
+                                <li><a href="#ReadCollectionResource">Мэдээлэл авах/унших</a></li>
+                                <li><a href="#QueryCollectionResource">Мэдээлэл шүүх</a></li>
+                                <li><a href="#NavigateCollectionResource">Мэдээлэл хуудаслах</a></li>
+                                <li><a href="#SortCollectionResource">Мэдээлэл сортлох</a></li>
+                                <li><a href="#ModifyCollectionResource">Мэдээлэл өөрчлөх</a></li>
+                            </ul>
+                            <br>
+                            <h2 id="ReadCollectionResource">Мэдээлэл авах/унших</h2>
+                            <p>
+                                Харъяалах болон харъяалагдах нөөцийн URL -ийг ашиглан коллекшн нөөцийн мэдээллийг авна.
+                            </p>
+                            <br>
+                            <ul>
+                                <li>
+                                    <h3>Харъяалах нөөцийн мэдээлэл авах</h3>
+                                    <p>
+                                        GET үйлдлийг ашиглан коллекшн нөөцийн мэдээллийг дараах байдлаар авна.
+                                    </p>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees</code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Харъяалах нөөцийн тодорхойлсон аттрибут (багана)-ны мэдээлэл авах</h3>
+                                    <p><code>fields</code> параметрийг ашиглан дараах байдлаар аттрибутын мэдээллийг авна.
+                                    </p>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees?fields=DisplayName,RegularTemporary,DateOfBirth</code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Тухайн заагдсан үеийн мэдээлэл авах</h3>
+                                    <p><code>effectiveDate</code> параметрыг ашиглан тухайн үед ямар мэдээлэлтэй байсныг авч болно.
+                                    </p>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees?effectiveDate=2016-02-02</code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Харъяалагдах дэд нөөцийн мэдээлэл авах</h3>
+                                    <p>
+                                        Харъяалагдах дэд нөөцийн мэдээллийг авахдаа тухайн харъяалах эцэг нөөцийн давхцахгүй түлхүүр кодыг
+                                        ашиглан авна.
+                                    </p>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees/00020000000EACED00057708/child/phones</code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Харъяалагдах дэд нөөцийн тодорхойлсон аттрибут (багана)-ны мэдээлэл авах</h3>
+                                    <p><code>fields</code> параметрыг ашиглан тодорхойлсон баганы мэдээллийг авна.
+                                    </p>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees?fields=DisplayName,FirstName,LastName;Phones:PhoneCountryCode,PhoneNumber</code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Харъяалах нөөцийг харъяалагдах дэд нөөцөөр өргөтгөх</h3>
+                                    <ul>
+                                        <li>
+                                            Веб сервисрүү хандах хүсэлтийг бууруулж нэг хандалтаар хэд хэдэн харъяалагдах дэд нөөцийн мэдээллийг
+                                            авч болно. Ингэхдээ
+                                            <code>expand</code> параметрийг ашиглах ба авах дэд нөөцийн нэрийг тоочиж бичнэ. Жишээ нь:
+                                            <pre>
+                                                            <code>GET /api/rest/1.0.0/employees?expand=phones,positions</code>
+                                                        </pre>
+                                        </li>
+                                        <br>
+                                        <li>Хэрэв бүх харъяалагдах дэд нөөцийн мэдээлэл болон ангилал (LOV) төрлийн нөөцийг хамтад нь авах бол,
+                                            <code>all</code> түлхүүр кодыг ашиглана. Жишээ нь:
+                                            <pre>
+                                                            <code>GET /api/rest/1.0.0/employees?expand=all</code>
+                                                        </pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Линк хэсгээг хасах</h3>
+                                    <p>Сервер буцаах датанаас линк хэсгийг авахгүй зөвхөн дата хэсгийг авах бол <code>onlyData</code> параметр
+                                        ашиглах ба энэ нь дамжих мэдээллийн хэмжээ болон ажиллах хугацааг бууруулна.</p>
+                                    <pre>
+                                                    <code>GET /api/rest/1.0.0/employees?fields=DisplayName,FirstName,LastName&amp;onlyData=true</code>
+                                                </pre>
+                                </li>
+                            </ul>
+                            <br>
+                            <h2 id="QueryCollectionResource">Мэдээлэл шүүх</h2>
+                            <p><code>q</code> параметрыг ашиглан тухайн нөөцийн мэдээллийг шүүж, филтердэж болно.
+                            </p>
+                            <br>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Оператор</strong></td>
+                                        <td><strong>Тайлбар</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>=</td>
+                                        <td>Утгатай тэнцүү</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&gt;</td>
+                                        <td>Утгаас их</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&lt;</td>
+                                        <td>Утгаас бага</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&gt;=</td>
+                                        <td>Утгаас их буюу тэнцүү</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&lt;=</td>
+                                        <td>Утгаас бага буюу тэнцүү</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&lt;&gt;</td>
+                                        <td>Утгатай тэнцүү биш</td>
+                                    </tr>
+                                    <tr>
+                                        <td>in</td>
+                                        <td>Жасаалтаар ирсэн утганд байгаа</td>
+                                    </tr>
+                                    <tr>
+                                        <td>is null</td>
+                                        <td>Утга нь хоосон бол</td>
+                                    </tr>
+                                    <tr>
+                                        <td>is not null</td>
+                                        <td>Утга нь хоосон биш бол</td>
+                                    </tr>
+                                    <tr>
+                                        <td>between</td>
+                                        <td>Хоёр утгын хооронд байвал</td>
+                                    </tr>
+                                    <tr>
+                                        <td>like</td>
+                                        <td>Утгатай төстэй бол</td>
+                                    </tr>
+                                    <tr>
+                                        <td>and</td>
+                                        <td>Ба</td>
+                                    </tr>
+                                    <tr>
+                                        <td>or</td>
+                                        <td>Эсвэл</td>
+                                    </tr>
+                                    <tr>
+                                        <td>upper</td>
+                                        <td>Том үсгээр</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <ul>
+                                <li>
+                                    <h3>Тоон аттрибут (багана)-ыг шүүх</h3>
+                                    <p>
+                                        Тоон аттрибутыг дараах нөхцлүүдээр шүүж болно.
+                                        <pre>
+                                            <code>GET /api/rest/1.0.0/employees?q=PersonId=1000</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=PersonId&gt;1000</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=PersonId between 1000 and 1100</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=PersonId in (1053, 1200, 1300)</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=CitizenshipId is not null</code>
+                                        </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Текст аттрибут (багана)-ыг шүүх</h3>
+                                    <p>
+                                        Текст аттрибутыг дараах нөхцлүүдээр шүүж болно.
+                                    </p>
+                                    <pre>
+                                            <code>GET /api/rest/1.0.0/employees?q=FirstName like Ki%</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=FirstName not like Ki%</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=FirstName is null</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=upper(FirstName) = KIM</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=upper(FirstName) like KI%</code>
+                                        </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Огноо аттрибут (багана)-ыг шүүх</h3>
+                                    <p>
+                                        Огноо аттрибутыг дараах нөхцлүүдээр шүүж болно.
+                                    </p>
+                                    <pre>
+                                            <code>GET /api/rest/1.0.0/employees?q=DateOfBirth &gt; 1960-01-01</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=DateOfBirth between 1960-01-01 and 1960-01-10</code>
+                                        </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Харъяалагдах дэд нөөцийн аттрибут (багана)-аар шүүх</h3>
+                                    <p>
+                                        Харъяалагдах дэд нөөцийн аттрибутыг ашиглан харъяалах нөөцийг дараах байдлаар шүүж болно.
+                                    </p>
+                                    <pre>
+                                            <code>GET /api/rest/1.0.0/employees?q=phones.PhoneCountryCode in ("+976", "+1", "+51")</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=phones.PhoneNumber like 9988%</code>
+                                        </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Олон нөхцлөөр шүүх</h3>
+                                    <p>
+                                        Эдгээр <code>and</code> болон <code>or</code> операторыг ашиглан хэд хэдэн нөхцлөөр шүүх боломжтой.
+                                        Жишээ нь:
+                                    </p>
+                                    <pre>
+                                            <code>GET /api/rest/1.0.0/employees?q=(Gender = M AND CitizenshipStatus = A) or (Ethnicity = 1)</code>
+                                            <code>GET /api/rest/1.0.0/employees?q=(DateOfBirth &gt; 1960-01-01) and (phones.PhoneCountryCode = "+976")</code>
+                                        </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Нэрлэсэн нөхцөл ашиглан шүүх</h3>
+                                    <p>
+                                        Тухайн коллекшн нөөц дээр зарим тохиолдолд хамгийн их ашиглагддаг нөхцлийг урьдчилан тохируулсан байдаг.
+                                        Тухайн нөхцлийг ашиглахдаа
+                                        <code>finder</code> параметрыг ашиглах ба тухайн нөхцлийн нэрийг заавал зааж өгнө. Жишээ нь:
+                                    </p>
+                                    <pre>
+                                                    <code>GET /api/rest/1.0.0/employees?finder=findByPhoneAttr;PhoneCountryCode=+976</code>
+                                            </pre>
+                                </li>
+                            </ul>
+                            <br>
+                            <h2 id="NavigateCollectionResource">Мэдээлэл хуудаслах</h2>
+                            <p>
+                                Коллекшн нөөцийн мэдээлэл дээр шүүлт болон хуудаслах параметр ашиглаж болно.
+                            </p>
+                            <br>
+                            <ul>
+                                <li>
+                                    <h3>Нийт нөөцийн тоог авах</h3>
+                                    <p>
+                                        Тухайн коллекшн дотор хичнээн нөөц байгааг <code>totalResults</code> параметрын утгыг<kbd>true</kbd> гэж
+                                        тохируулан авна.
+                                        Үндсэн утга нь <kbd>false</kbd> байна. Хэрэв шүүлтийн нөхцөл бичсэн бол <code>totalResults</code> хэсэгт
+                                        тухайн нөхцөл таарч байгаа нийт нөөцийн тоог буцаана.
+                                    </p>
+                                    <br>
+                                    <h4>Хүсэлт</h4>
+                                    <pre>
+                                                <code>GET /api/rest/1.0.0/employees?q=FirstName=Bayaraa&amp;totalResults=true</code>
+                                            </pre>
+                                    <br>
+                                    <h4>Хариу</h4>
+                                    <pre>
+                                                <code>
+                                                    {
+                                                        "items" : [ {
+                                                        "FirstName" : "Bayaraa",
+                                                        "LastName" : "Basan",
+                                                        ...
+                                                        ],
+                                                        "totalResults" : 9,
+                                                        "count" : 6,
+                                                        "hasMore" : true,
+                                                        "limit" : 6,
+                                                        "offset" : 0,
+                                                        "links" : [ {
+                                                        "rel" : "self",
+                                                        "href" : "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees",
+                                                        "name" : "employees",
+                                                        "kind" : "collection"
+                                                        } ]
+                                                    }
+                                                </code>
+                                            </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Хуудаслах тоог тохируулах</h3>
+                                    <p>
+                                        Сервер буцаах нөөцийг <code>limit</code> параметрыг ашиглана хязгаарлаж болно.
+                                        Үндсэн утга нь 25 байна. Дараах жишээ дээр хязгаарын тоог 4 гэж заасан байна.
+                                    </p>
+                                    <pre>
+                                                    <code>GET /api/rest/1.0.0/employees?q=FirstName=Bayaraa&amp;limit=4</code>
+                                                </pre>
+                                </li>
+                                <br>
+                                <li>
+                                    <h3>Хуудаслалт эхлэх байршлыг тохируулах</h3>
+                                    <p>
+                                        Хуудаслалт эхлэх байршлыг <code>offset</code> параметр ашиглан тогтооно.
+                                        parameter. Үндсэн утга нь 0 байх ба энэ нь коллекшны эхнээс эхлэхийг заана.
+                                        Дараагийн хуудсын мэдээллийг авах бол <code>offset</code> -ийн утгыг <code>limit</code>-ийн утгаар
+                                        ихэсгэнэ.
+                                    </p>
+                                    <ul>
+                                        <li><code>hasMore</code> параметр нь тухайн хуудаслалтаар ирсэн датанаас өөр дата байгаа эсэхийг
+                                            илэрхийлнэ.
+                                            Хэрэв та бүх датаг авахыг хүсвэл <code>hasMore</code> параметрын утгыг <code>false</code> хүртэл
+                                            давталт хийнэ.
+                                        </li>
+                                        <li><code>count</code> параметр нь тухайн хуудаслалтаар ирсэн нөөцийн тоог заана.
+                                        </li>
+                                    </ul>
+                                    <p>Дараах жишээгээр, нийт 9 нөөцөөс нэг хүсэлтээр 4 нөөц ирж байгааг харуулав.
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <br>
+                                            <h4>Хүсэлт</h4>
+                                            <pre>
+                                                                            <code>GET /api/rest/1.0.0/employees?q=FirstName=Bayaraa&amp;limit=4</code>
+                                                                        </pre>
+                                            <br>
+                                            <h4>Хариу</h4>
+                                            <div>
+                                                <pre>
+                                                                                <code>
+                                                                                    {
+                                                                                        "items" : [ {
+                                                                                        "FirstName" : "Bayaraa",
+                                                                                        ..],
+                                                                                        "count" : 4,
+                                                                                        "hasMore" : true,
+                                                                                        "limit" : 4,
+                                                                                        "offset" : 0,
+                                                                                        "links" : [ {
+                                                                                        "rel" : "self",
+                                                                                        "href" : "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees",
+                                                                                        "name" : "employees",
+                                                                                        "kind" : "collection"
+                                                                                        } ]
+                                                                                    }
+                                                                                </code>
+                                                                            </pre>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <br>
+                                            <h4>Хүсэлт</h4>
+                                            <pre>
+                                                                            <code>GET /api/rest/1.0.0/employees?q=FirstName=Bayaraa&amp;limit=4&amp;offset=4</code>
+                                                                        </pre>
+                                            <br>
+                                            <h4>Хариу</h4>
+                                            <pre>
+                                                                            <code>
+                                                                                {
+                                                                                    "items" : [ {
+                                                                                    "FirstName" : "Bayaraa",
+                                                                                    .. } ],
+                                                                                    "count" : 4,
+                                                                                    "hasMore" : true,
+                                                                                    "limit" : 4,
+                                                                                    "offset" : 4,
+                                                                                    "links" : [ {
+                                                                                    "rel" : "self",
+                                                                                    "href" : "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees",
+                                                                                    "name" : "employees",
+                                                                                    "kind" : "collection"
+                                                                                    } ]
+                                                                                }
+                                                                            </code>
+                                                                        </pre>
+                                        </li>
+                                        <li>
+                                            <br>
+                                            <h4>Хүсэлт</h4>
+                                            <pre>
+                                                                            <code>GET /api/rest/1.0.0/employees?q=FirstName=Bayaraa&amp;limit=4&amp;offset=8</code>
+                                                                        </pre>
+                                            <br>
+                                            <h4>Хариу</h4>
+                                            <pre>
+                                                                                <code>
+                                                                                    {
+                                                                                        "items" : [ {
+                                                                                        "FirstName" : "Kim",
+                                                                                        ..
+                                                                                        } ],
+                                                                                        "count" : 1,
+                                                                                        "hasMore" : false,
+                                                                                        "limit" : 4,
+                                                                                        "offset" : 8,
+                                                                                        "links" : [ {
+                                                                                        "rel" : "self",
+                                                                                        "href" : "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees",
+                                                                                        "name" : "employees",
+                                                                                        "kind" : "collection"
+                                                                                        } ]
+                                                                                    }
+                                                                                </code>
+                                                                            </pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <br>
+                            <h2 id="SortCollectionResource">Мэдээлэл сортлох</h2>
+                            <p>Коллекшн нөөцийн мэдээллийг сортлохдоо <code>orderBy</code> параметрыг ашиглах ба сортлох дарааллыг тогтооно.
+                                Жишээ нь asc-үсгийн дарааллаар, desc-үсгийн дараалал буурахаар.
+                            </p>
+                            <ul>
+                                <li>
+                                    <h3>Нэг аттрибут (багана)-аар сортлох</h3>
+                                    <p>
+                                        <code>orderBy</code> параметрыг ашиглан сорт хийнэ.
+                                    </p>
+                                    <pre>
+                                        <code>GET /api/rest/1.0.0/employees?q=FirstName like B%&amp;orderBy=FirstName</code>
+                                    </pre>
+                                </li>
+                                <li>
+                                    <h3>Нэг аттрибут (багана)-аар дараалал тогтоож сортлох</h3>
+                                    <p>
+                                        <code>orderBy</code> параметрыг ашиглан сорт хийх ба тухайн аттрибутын араас <code>:</code> ашиглан
+                                        дарааллын тохиргоог хийнэ.
+                                    </p>
+                                    <pre>
+                                        <code>GET /api/rest/1.0.0/employees?q=FirstName like B%&amp;orderBy=FirstName:desc</code>
+                                    </pre>
+                                </li>
+                                <li>
+                                    <h3>Олон аттрибут (багана)-аар сортлох</h3>
+                                    <p>
+                                        <code>orderBy</code> параметрыг ашиглан сортлох ба сортлох аттрибутыг хооронд нь <code>,</code>-аар
+                                        ялгана.
+                                    </p>
+                                    <pre>
+                                        <code>GET /api/rest/1.0.0/employees?q=FirstName like B%&amp;orderBy=FirstName,LastName:desc</code>
+                                    </pre>
+                                </li>
+                            </ul>
+                            <br>
+                            <h2 id="ModifyCollectionResource">Мэдээлэл өөрчлөх</h2>
+                            <p>
+                                Коллекшн нөөцөд сингулар нөөцийн мэдээлэл нэмэх ба устгах үйлдлийн талаар энэ хэсгээс танилцана.
+                            </p>
+                            <ul>
+                                <li>
+                                    <h3>Нөөц шинээр нэмэх</h3>
+                                    <p>
+                                        Шинэ нөөц үүсгэхдээ POST хүсэлтийг ашиглах коллекшн нөөцийн URL дээр хийгдэнэ.
+                                        Дараах жишээгээр base64-encoded фото зургыг Ажилтан дээр нэмж байна.
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Request Header дээрх <code>Content-Type: application/json</code> утгыг тохируулж өгнө.
+                                                Энэ нь зөвхөн POST болон PATCH хүсэлтэд шаардлагатай.
+                                            </p>
+                                            <br>
+                                            <h4>Хүсэлт</h4>
+                                            <pre>
+                                                        <code>POST /api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo</code> 
+                                                        <code>Content-Type: application/json</code>
+                                                        <code>
+                                                            {
+                                                                "ImageName" : "ProfilePhoto",
+                                                                "PrimaryFlag" : "Y",
+                                                                "Image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAqERilSpVRZ//Z"
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            <br>
+                                            <h4>Хариу</h4>
+                                            <p>
+                                                Хэрэв хүсэлт амжилттай болсон бол сервер 201 төлвийн код болон response body-ны мэдээллийг
+                                                буцаана.
+                                            </p>
+                                            <pre>
+                                                        <code>
+                                                            201 CREATED
+                            
+                            
+                                                            {
+                                                                "ImageName": "ProfilePhoto",
+                                                                "PrimaryFlag": "Y",
+                                                                ''
+                                                                "links": [
+                                                                {
+                                                                    "rel": "self",
+                                                                    ...
+                                                                },
+                                                                {
+                                                                    "rel": "canonical",
+                                                                    ...
+                                                                },
+                                                                {
+                                                                    "rel": "parent",
+                                                                ...
+                                                                },
+                                                                {
+                                                                    "rel": "enclosure",
+                                                                    "href": "...",
+                                                                    "name": "Image",
+                                                                    "kind": "other"
+                                                                }
+                                                                ]
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                Request header дээр
+                                                <code>
+                                                    Accept: application/json;q=0
+                                                    Content-Type: application/json
+                                                </code> тохируулан хүсэлт үүсгэх.
+                                            </p>
+                                            <br>
+                                            <h4>Хүсэлт</h4>
+                                            <pre>
+                                                        <code>POST /api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo</code> 
+                                                        <code>Accept: application/json;q=0</code> 
+                                                        <code>Content-Type: application/json</code>
+                                                        <code>
+                                                            {
+                                                                "ImageName" : "ProfilePhoto",
+                                                                "PrimaryFlag" : "Y",
+                                                                "Image": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAqERilSpVRZ//Z"
+                                                            }
+                                                        </code>
+                                                    </pre>
+                                            <br>
+                                            <h4>Хариу</h4>
+                                            <p>Response дээр мэдээлэл буцаахгүй.</p>
+                                            <pre>
+                                                        <code>204 No Content</code>
+                                                    </pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>Нөөцийн мэдээлэл устгах</h3>
+                                    <p>
+                                        Нөөцийн мэдээлэл устгахдаа DELETE хүсэлтийг илгээнэ.
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <pre>
+                                                            <code>GET /api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo</code></code>
+                                                        </pre>
+                        </div>
+                        <p>
+                            Response дээр мэдээллийг харуулах.
+                        </p>
+                        <pre>
+                                                            <code>
+                                                                {
+                                                                    "items": [
+                                                                    {
+                                                                        "ImageName": "ProfilePhoto",
+                                                                        "PrimaryFlag": "Y",
+                                                                        "ImageId": 300100074650412,
+                                                                        "PersonId": 24,
+                                                                        "ObjectVersionNumber": 1,
+                                                                        "links": [
+                                                                        {
+                                                                            "rel": "self",
+                                                                            "href": "https://...",
+                                                                            ..
+                                                                        },
+                                                                        ..
+                                                                        ]
+                                                                    }
+                                                                    ],
+                                                                    ..
+                                                                    ]
+                                                                }
+                                                            </code>
+                                                        </pre>
+                        </div>
+                        </li>
+                        <li>
+                            <p>Фото зургийг self ашиглан устгах.</p>
+                            <pre>
+                                                            <code>DELETE /api/rest/1.0.0/employees/00020000000EACED000577080000000000000018/child/photo/300</code>
+                                                        </pre>
+                        </li>
+                        </ol>
+                        </li>
+                        </ul>
+        '
+    -
+        name: Сингулар нөөцтэй ажиллах
+        description: '
+                        <p>
+                            Сингулар нөөц дээр дараах үйлдлүүдийг хийж болно.
+                        </p>
+                        <ul>
+                            <li><a href="#ReadSingularResource">Мэдээлэл авах/унших</a></li>
+                            <li><a href="#VerifySingularResource">Мэдээлэл шалгах</a></li>
+                            <li><a href="#ModifySingularResource">Мэдээлэл өөрчлөлт</a> </li>
+                        </ul>
+                        <br>
+                        <h2 id="ReadSingularResource">Мэдээлэл авах/унших</h2>
+                        <p>
+                            Сингулар нөөцийг авахдаа харъяалах болон харъяалагдах нөөцийн URL замаар хандаж авна.
+                        </p>
+                        <br>
+                        <ul>
+                            <li>
+                                <h3>Харъяалах нөөцийг авах</h3>
+                                <p>Харъяалах нөөцийг авахдаа тухайн харъяалах эцэг нөөцийн давхцахгүй түлхүүр кодоор авна.
+                                </p>
+                                <pre>
+                                                <code>GET /api/rest/1.0.0/employees/73195713205179389</code>
+                                            </pre>
+                                <br>
+                            </li>
+                            <li>
+                                <h3>Харъяалах нөөцийн аттрибут (багана)-ыг авах</h3>
+                                <p>Харъяалах нөөцийн тогтоосон аттрибут (багана)-ыг авахдаа
+                                    <code>fields</code> параметр ашиглана. Жишээ нь:
+                                </p>
+                                <pre>
+                                            <code>GET /api/rest/1.0.0/employees/73195713205179389?fields=DisplayName,FirstName,LastName,Gender</code>
+                                        </pre>
+                                <br>
+                            </li>
+                            <li>
+                                <h3>Харъяалагдах нөөцийг авах</h3>
+                                <p>Харъяалагдах нөөцийг авахдаа тухайн харъяалах эцэг нөөцийн давхцахгүй түлхүүр код болон <code>/child</code>
+                                    замаар
+                                    авна.</p>
+                                <pre>
+                                            <code>GET /api/rest/1.0.0/employees/73195713205179389/child/phones</code>
+                                        </pre>
+                                <br>
+                            </li>
+                            <li>
+                                <h3>Харъяалагдах нөөцөөр харъяалах нөөцийг өргөжүүлэх</h3>
+                                <p>
+                                    <expand> параметр ашиглан харъяалах нөөц дээр нэмж ямар ямар харъяалагдах нөөцийг авахыг зааж болно
+                                </p>
+                                <pre>
+                                        <code>GET /api/rest/1.0.0/employees/73195713205179389?expand=phones</code>
+                                    </pre>
+                                <br>
+                                <h2>Жишээ</h2>
+                                <p>Харъяалах нөөцийг хэрхэн өргөжүүлэхийг дараах жишээгээр харуулж байна.</p>
+                                <br>
+                                <p>Хүсэлт</p>
+                                <div>
+                                    <pre>
+                                                        <code>GET /api/rest/1.0.0/employees/73195713205179389?expand=phones</code> 
+                                                    </pre>
+                                </div>
+                                <br>
+                                <p>Хариулт</p>
+                                <pre>
+                                    <code>
+                                        200 OK
+                                
+                                        {
+                                        "EmployeeId": 73195713205179389,
+                                        "WorkerCode": "WKR73195713205179389",
+                                        "Phones": {
+                                            "items": [
+                                            {
+                                                "PhoneUsageType": "MOBILE",
+                                                "PhoneCountryCode": "+976",
+                                                "PhoneAreaCode": null,
+                                                "PhoneNumber": "98765432"
+                                            }
+                                            ],
+                                            "count": 1,
+                                            "hasMore": false,
+                                            "limit": 24,
+                                            "offset": 0,
+                                            "links": [
+                                            {
+                                                "rel": "self",
+                                                "href": "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/73195713205179389/child/phones",
+                                                "name": "Phones",
+                                                "kind": "collection"
+                                            }
+                                            ]
+                                        }
+                                        }
+                                    </code>
+                                </pre>
+                                <br>
+                            </li>
+                            <li>
+                                <h3>Харъяалагдах нөөцийн тодорхойлсон аттрибут (багана)-ыг авах</h3>
+                                <p><code>fields</code> параметрыг ашиглан нэг болон хэд хэдэн аттрибут (багана)-ыг авах боломжтой.
+                                </p>
+                                <pre>
+                                                <code> GET /api/rest/1.0.0/employees/73195713205179389?fields=DisplayName,FirstName,LastName;Phones:PhoneCountryCode,PhoneNumber;</code>
+                                            </pre>
+                                <br>
+                            </li>
+                            <li>
+                                <h3>Линк хэсгийг хасах</h3>
+                                <p>Линк хэсгийг хариу датанаас <code>onlyData</code> параметр ашиглан хасаж болно.
+                                    Энэ нь веб сервисээр дамжих датаны хэмжээг багасгах ба илүү хурдан ажиллах нөхцөл болно.
+                                </p>
+                                <pre>
+                                                <code>GET /api/rest/1.0.0/employees/73195713205179389?onlyData=true</code>
+                                            </pre>
+                                <br>
+                            </li>
+                        </ul>
+                        <br>
+                        <h2 id="VerifySingularResource">Мэдээлэл шалгах</h2>
+                        <p>
+                            Мэдээлэл хадгалах хугацаа болон дамжуулах датаны хэмжээг багасгахын тулд клиент тал дээр
+                            нөхцөл бичих боломжтой. Энэ боломжийг <code>ETag</code> дээр тохируулна.
+                        </p>
+                        <ol>
+                            <li>
+                                <p><code>ETag</code>-ийн утга авах. Сингулар нөөц дээр GET үйлдэл ашиглах үед сервер response header-ийн
+                                <code>ETag</code>-д
+                                тухайн нөөцийн сервер дээрх төлвийг буцаана. Жишээ нь:
+                                </p>
+                                <br>
+                                <p>Хүсэлт</p>
+                                <pre>
+                                                <code>GET /api/rest/1.0.0/employees/73195713205179389?fields=DisplayName&amp;onlyData=true</code>
+                                            </pre>
+                                <br>
+                                <p>Хариулт</p>
+                                <pre>
+                                                <code>
+                                                    200 OK
+
+                                                    Etag: "ACED0005737200136A6176612E7574696CA6176612E6C616E672E4"
+                                                    
+                                                    {
+                                                        "DisplayName": "Bayaraa Basan"
+                                                    }
+                                                </code>
+                                            </pre>
+                            <br>
+                            </li>
+                            <li>
+                                <p>Тухайн сервер буцаасан <code>ETag</code> утгыг хадгалаад дараа дараагийн GET хүсэлтүүдийг
+                                <code>If-None-Match</code> нөхцөлтэйгээр ашиглана.
+                                Энэ нөхцөл нь сервер тухайн нөөц зөвхөн өөрчлөгдсөн үед хариу буцаахыг илэрхийлнэ.
+                                </p>
+                                <br>
+                                <p>Хүсэлт</p>
+                                <pre>
+                                                <code>GET /api/rest/1.0.0/employees/73195713205179389?fields=DisplayName&amp;onlyData=true</code> 
+                                                <code>If-None-Match: "ACED0005737200136A6176612E7574696CA6176612E6C616E672E4"</code>
+                                            </pre>
+                                <br>
+                                <p>Хариулт</p>
+                                <ul>
+                                    <li>
+                                        Хэрэв тухайн нөөц өөрчлөгдөөгүй бол, сервер response body буцаахгүй.
+                                        <pre>
+                                                <code>304 Not modified</code>
+                                            </pre>
+                                    </li>
+                                    <li>
+                                        Хэрэв тухайн нөөц өөрчлөгдсөн бол, сервер шинэ төлвийг <code>ETag</code> дээр буцаах ба түүнийг клиент
+                                        дээр хадгалснаар
+                                        дараагийн удаа хүсэлт илгээхдээ ашиглаж болно.
+                                        <pre>
+                                                <code>
+                                                    200 OK
+
+                                                    Etag: "FCED00057372000000014770400000014737A76612E6C616E672E4"
+                                                    
+                                                    {
+                                                    "DisplayName": "Bayaraa B"
+                                                    }
+                                                </code>
+                                            </pre>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <br>
+                        <h2 id="ModifySingularResource">Мэдээллийн өөрчлөлт</h2>
+                        <p>Веб сервисийн нөөцийн мэдээлэл өөрчлөх болон устгах үйлдлийг энэ хэсгээс харна уу.
+                        </p>
+                        <br>
+                        <ul>
+                            <li>
+                                <h3>Нөөцийн мэдээлэл засах</h3>
+                                <p>
+                                    PATCH үйлдлийг ашиглан нөөцийн мэдээлэл өөрчлөх ба дараах жишээгээр Ажилтны суралцах хэлбэр хэрхэн
+                                    өөрчлөхийг
+                                    харуулж байна.
+                                </p>
+                                <br>
+                                <ol>
+                                    <li>
+                                        <p>Request Header дээрх <span>Content-Type</span>-ийг <kbd>application/json</kbd> төрлөөр тохируулах ба
+                                            request body дээр өөрчлөх мэдээллийг дамжуулна.
+                                        </p>
+                                        <br>
+                                        <h4>Хүсэлт</h4>
+                                        <pre>
+                                                <code>PATCH /api/rest/1.0.0/employees/73291847032 Content-Type: application/json</code>
+                                            </pre>
+                                        <pre>
+                                                <code>
+                                                    {
+                                                        "RegularTemporary": "REGULAR"
+                                                    }
+                                                </code>
+                                            </pre>
+                                        <br>
+                                        <h4>Хариулт</h4>
+                                        <p>
+                                            Response body дээр тухайн нөөцийн мэдээллийг болон response header-ийн <span>ETag</span>-ийн утгад
+                                            сервер
+                                            дээрх төлвийг буцаана.
+                                        </p>
+                                        <pre>
+                                                <code>
+                                                    200 OK
+                                                
+                                                    Etag: "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000001477040000"
+                                                    
+                                                    {
+                                                    
+                                                    
+                                                    (...)
+                                                    
+                                                    "RegularTemporary": "REGULAR",
+                                                    
+                                                    (...)
+                                                    
+                                                    "links": [
+                                                        {
+                                                        "rel": "self",
+                                                        "href": "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/73291847032",
+                                                        "name": "employees",
+                                                        "kind": "item",
+                                                        "properties": {
+                                                            "changeIndicator": "ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000001477040000"
+                                                        }
+                                                        },
+                                                        
+                                                        (...)
+                                                    
+                                                    ]
+                                                    }
+                                                </code>
+                                            </pre>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <p>
+                                            Response-оос нөөцийн мэдээллийг хасахдаа
+                                            response header-ийн <span>Content Type</span> болон <span>Accept</span>-ийг ашиглана. Жишээ нь:
+                                        </p>
+                                        <br>
+                                        <h4>Хүсэлт</h4>
+                                        <pre>
+                                                <code>PATCH /api/rest/1.0.0/employees/73291847032</code> 
+                                                <code>Accept: application/json;q=0</code> 
+                                                <code>Content-Type: application/json</code>
+                                            </pre>
+                                        <pre>
+                                                <code>
+                                                    {
+                                                        "RegularTemporary": "REGULAR"
+                                                    }
+                                                </code>
+                                            </pre>
+                                        <br>
+                                        <h4>Хариулт</h4>
+                                        <p>Response зөвхөн <span>ETag</span>-ийн утгыг агуулна.</p>
+                                        <pre>
+                                                <code>
+                                                    204 No Content
+                                    
+                                                    Etag: "ACEF0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A6578700000001477040000"
+                                                </code>
+                                            </pre>
+                                    </li>
+                        </ul>
+                        </li>
+                        <br>
+                        <li>
+                            <h3>Нөөцийн мэдээлэл устгах</h3>
+                            <p>
+                                DELETE үйлдлийг тухайн нөөцийн <code>self</code> линкийг ашиглан устгана.
+                            </p>
+                            <br>
+                            <h4>Хүсэлт</h4>
+                            <pre>
+                                        <code>DELETE /api/rest/1.0.0/employees/93728159823/child/photo/300100074710030</code>
+                                    </pre>
+                            <br>
+                            <h4>Хариулт</h4>
+                            <pre>
+                                        <code>204 No Content</code>
+                                    </pre>
+                        </li>
+                        </ul>
+        '
+    -
+        name: Веб сервис тестлэх
+        description: '
+                        <p>
+                            Интернет хандалттай програм болон програмчлалын платформ ашиглан REST веб сервисийг туршиж болно.
+                        </p>
+                        <br>
+                        <h3>cURL ашиглах</h3>
+                        <p>
+                            Дараах хүснэгтэд GET, PATCH, болон POST үйлдлүүдийг <span>employees</span> нөөц дээр cURL коммандаар хэрхэн ашиглахыг
+                            жишээгээр үзүүлэв.
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Үйлдэл</strong></td>
+                                    <td><strong>cURL комманд</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>GET</h4>
+                                        <p>(Ажилтны мэдээлэл авах)</p>
+                                    </td>
+                                    <td>curl --user User1:Welcome1 -X GET
+                                        "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees"
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>PATCH</h4>
+                                        <p>(Ажилтны мэдээлэл засах)</p>
+                                    </td>
+                                    <td>curl --user User1:Welcome1 -X PATCH -H "Content-Type:
+                                        application/json"
+                                        "https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/{id}"</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>POST</h4>
+                                        <p>(Ажилтан шинээр үүсгэх)</p>
+                                    </td>
+                                    <td>curl --user User1:Welcome1 -X POST -H "Content-Type:
+                                        application/json"
+                                        "http://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <h3>REST клиент ашиглах</h3>
+                        <p>
+                            Дараах хүснэгтэд GET, PATCH, болон POST үйлдлүүдийг <span>employees</span> нөөц дээр REST клиентээр хэрхэн ашиглахыг
+                            жишээгээр үзүүлэв.
+                        </p>
+                        <br>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Веб сервисийн үйлдэл</strong></td>
+                                    <td><strong>Хариу дата (Response Payload)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>GET</h4>
+                                        <p>(Ажилтанийг нэрээр хайх)</p>
+                                        <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/?q=FirstName=Bayaraa</code>
+                                    </td>
+                                    <td>
+                                        <code>
+                                                {
+                                                    "WorkerCode": "WKR2378572034750",
+                                                    "FirstName" : "Bayaraa",
+                                                    "MiddleName" : null,
+                                                    "LastName" : "Basan",
+                                                    "NameSuffix" : Null,
+                                                    "DisplayName" : "Bayaraa Basan",
+                                                    "PersonNumber" : "04298543572042533",
+                                                    "MobilePhoneCountryCode" : "null",
+                                                    "MobilePhoneAreaCode" : "null",
+                                                    "MobilePhoneNumber" : "null",
+                                                    "HomeFaxCountryCode" : "null",
+                                                    "HomeFaxAreaCode" : "null",
+                                                    "HomeFaxPhoneNumber" : "null",
+                                                    "HomePhoneCountryCode" : "null",
+                                                    "HomePhoneAreaCode" : "null",
+                                                    "HomePhoneNumber" : "null",
+                                                    "PersonalEmail" : "bayaraa.basan@example.com"
+                                                    ...
+                                                }
+                                        </code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>POST</h4>
+                                        <p>(Шинэ утасны дугаар үүсгэх)</p>
+                                        <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/{id}/child/phones</code>
+                                    </td>
+                                    <td>
+                                            <code>
+                                                {
+                                                    "PhoneUsageType" : "MOBILE",
+                                                    "PhoneCountryCode" : "+976",
+                                                    "PhoneAreaCode" : "null",
+                                                    "PhoneNumber" : "98765432"
+                                                }
+                                            </code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>PATCH</h4>
+                                        <p>(Хувийн мэйл хаяг өөрчлөх)</p>
+                                        <code>https://&lt;host&gt;:&lt;port&gt;/api/rest/1.0.0/employees/{id}</code>
+                                    </td>
+                                    <td>
+                                            <code>
+                                                {
+                                                    "PersonalEmail" : "bayaraa.basan@example.com"
+                                                }
+                                            </code>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+        '
