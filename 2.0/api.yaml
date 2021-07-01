@@ -5334,14 +5334,13 @@ paths:
                 - application/json
             tags:
                 - Хүн
-            x-internal-id: hemis-api-2.0-persons-get
             x-code-samples:
                 -  
                     lang: cURL
                     source: '
-                            curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
+                            curl -X GET -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
                             -H "Content-Type: application/json" 
-                            -d {"name": "CASH", "type": "Cash"} "https://hemis.edu.mn/api/2.0/persons"
+                            "https://hr.csc.gov.mn/api/rest/2.0/person"
                             '
                 -  
                     lang: Java
@@ -5350,7 +5349,7 @@ paths:
 
                             MediaType mediaType = MediaType.parse("application/json");
                             Request request = new Request.Builder()
-                            .url("https://hemis.edu.mn/api/2.0/persons")
+                            .url("https://hr.csc.gov.mn/api/rest/2.0/person")
                             .get()
                             .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
                             .addHeader("content-type", "application/json")
@@ -5374,12 +5373,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-item'
+                        $ref: '#/definitions/persons-item2'
             produces:
                 - application/json
             tags:
                 - Хүн
-            x-internal-id: hemis-api-2.0-persons-post
     /person/{id}:
         get:
             operationId: getPersons
@@ -5432,12 +5430,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-item'
+                        $ref: '#/definitions/persons-item2'
             produces:
                 - application/json
             tags:
                 - Хүн
-            x-internal-id: hemis-api-2.0-persons-{id}-patch
         delete:
             operationId: deletePerson
             summary: Хүн мэдээлэл устгах
@@ -5449,7 +5446,6 @@ paths:
                 - application/json
             tags:
                 - Хүн
-            x-internal-id: hemis-api-2.0-persons-{id}-delete
         parameters:
             - 
                 name: id
@@ -5553,12 +5549,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-addresses-item'
+                        $ref: '#/definitions/persons-addresses-item2'
             produces:
                 - application/json
             tags:
                 - Хүний хаяг байршил
-            x-internal-id: hemis-api-2.0-persons-child-addresses-post   
         parameters:
             - 
                 name: id
@@ -5632,12 +5627,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-addresses-item'
+                        $ref: '#/definitions/persons-addresses-item2'
             produces:
                 - application/json
             tags:
-                - Хүний хаяг байршил
-            x-internal-id: hemis-api-2.0-persons-child-addresses-{childId}-patch      
+                - Хүний хаяг байршил      
         delete:
             operationId: deletePersonAddress
             summary: Хүний хаяг байршлын хаяг устгах
@@ -5648,8 +5642,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний хаяг байршил
-            x-internal-id: hemis-api-2.0-persons-child-addresses-{childId}-delete   
+                - Хүний хаяг байршил   
         parameters:
             - 
                 name: id
@@ -5756,7 +5749,6 @@ paths:
                 - application/json
             tags:
                 - Хүний шагнал
-            x-internal-id: hemis-api-2.0-persons-child-awards-get
         post:
             operationId: createPersonAwards
             summary: Хүний шагнал үүсгэх
@@ -5773,12 +5765,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-awards-item'
+                        $ref: '#/definitions/persons-awards-item2'
             produces:
                 - application/json
             tags:
-                - Хүний шагнал
-            x-internal-id: hemis-api-2.0-persons-child-awards-post   
+                - Хүний шагнал   
         parameters:
             - 
                 name: id
@@ -5830,12 +5821,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-awards-item'
+                        $ref: '#/definitions/persons-awards-item2'
             produces:
                 - application/json
             tags:
                 - Хүний шагнал
-            x-internal-id: hemis-api-2.0-persons-child-awards-{childId}-get
         patch:
             operationId: updatePersonAwards
             summary: Хүний шагналын мэдээлэл засах
@@ -5852,12 +5842,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-awards-item'
+                        $ref: '#/definitions/persons-awards-item2'
             produces:
                 - application/json
             tags:
-                - Хүний шагнал
-            x-internal-id: hemis-api-2.0-persons-child-awards-{childId}-patch      
+                - Хүний шагнал      
         delete:
             operationId: deletePersonAwards
             summary: Хүний шагналын хаяг устгах
@@ -5868,8 +5857,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний шагнал
-            x-internal-id: hemis-api-2.0-persons-child-awards-{childId}-delete   
+                - Хүний шагнал 
         parameters:
             - 
                 name: id
@@ -5976,7 +5964,6 @@ paths:
                 - application/json
             tags:
                 - Хүний амьдрах нөхцөл
-            x-internal-id: hemis-api-2.0-persons-child-conditions-get
         post:
             operationId: createPersonConditions
             summary: Хүний амьдрах нөхцөл үүсгэх
@@ -5993,12 +5980,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-conditions-item'
+                        $ref: '#/definitions/persons-conditions-item2'
             produces:
                 - application/json
             tags:
-                - Хүний амьдрах нөхцөл
-            x-internal-id: hemis-api-2.0-persons-child-conditions-post   
+                - Хүний амьдрах нөхцөл  
         parameters:
             - 
                 name: id
@@ -6050,12 +6036,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-conditions-item'
+                        $ref: '#/definitions/persons-conditions-item2'
             produces:
                 - application/json
             tags:
                 - Хүний амьдрах нөхцөл
-            x-internal-id: hemis-api-2.0-persons-child-conditions-{childId}-get
         patch:
             operationId: updatePersonConditions
             summary: Хүний амьдрах нөхцөлийн мэдээлэл засах
@@ -6072,12 +6057,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-conditions-item'
+                        $ref: '#/definitions/persons-conditions-item2'
             produces:
                 - application/json
             tags:
-                - Хүний амьдрах нөхцөл
-            x-internal-id: hemis-api-2.0-persons-child-conditions-{childId}-patch      
+                - Хүний амьдрах нөхцөл   
         delete:
             operationId: deletePersonConditions
             summary: Хүний амьдрах нөхцөлийн хаяг устгах
@@ -6196,7 +6180,6 @@ paths:
                 - application/json
             tags:
                 - Хүний боловсрол
-            x-internal-id: hemis-api-2.0-persons-child-educations-get
         post:
             operationId: createPersonEducations
             summary: Хүний боловсрол үүсгэх
@@ -6213,12 +6196,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-educations-item'
+                        $ref: '#/definitions/persons-educations-item2'
             produces:
                 - application/json
             tags:
-                - Хүний боловсрол
-            x-internal-id: hemis-api-2.0-persons-child-educations-post   
+                - Хүний боловсрол  
         parameters:
             - 
                 name: id
@@ -6270,12 +6252,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-educations-item'
+                        $ref: '#/definitions/persons-educations-item2'
             produces:
                 - application/json
             tags:
                 - Хүний боловсрол
-            x-internal-id: hemis-api-2.0-persons-child-educations-{childId}-get
         patch:
             operationId: updatePersonEducations
             summary: Хүний боловсролын мэдээлэл засах
@@ -6292,12 +6273,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-educations-item'
+                        $ref: '#/definitions/persons-educations-item2'
             produces:
                 - application/json
             tags:
-                - Хүний боловсрол
-            x-internal-id: hemis-api-2.0-persons-child-educations-{childId}-patch      
+                - Хүний боловсрол    
         delete:
             operationId: deletePersonEducations
             summary: Хүний боловсролын хаяг устгах
@@ -6308,8 +6288,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний боловсрол
-            x-internal-id: hemis-api-2.0-persons-child-educations-{childId}-delete   
+                - Хүний боловсрол 
         parameters:
             - 
                 name: id
@@ -6416,7 +6395,6 @@ paths:
                 - application/json
             tags:
                 - Хүний мэйл хаяг
-            x-internal-id: hemis-api-2.0-persons-child-emails-get
         post:
             operationId: createPersonEmails
             summary: Хүний мэйл хаяг үүсгэх
@@ -6433,12 +6411,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-emails-item'
+                        $ref: '#/definitions/persons-emails-item2'
             produces:
                 - application/json
             tags:
-                - Хүний мэйл хаяг
-            x-internal-id: hemis-api-2.0-persons-child-emails-post   
+                - Хүний мэйл хаяг  
         parameters:
             - 
                 name: id
@@ -6490,12 +6467,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-emails-item'
+                        $ref: '#/definitions/persons-emails-item2'
             produces:
                 - application/json
             tags:
                 - Хүний мэйл хаяг
-            x-internal-id: hemis-api-2.0-persons-child-emails-{childId}-get
         patch:
             operationId: updatePersonEmails
             summary: Хүний мэйл хаягийн мэдээлэл засах
@@ -6512,12 +6488,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-emails-item'
+                        $ref: '#/definitions/persons-emails-item2'
             produces:
                 - application/json
             tags:
-                - Хүний мэйл хаяг
-            x-internal-id: hemis-api-2.0-persons-child-emails-{childId}-patch      
+                - Хүний мэйл хаяг    
         delete:
             operationId: deletePersonEmails
             summary: Хүний мэйл хаяг устгах
@@ -6528,8 +6503,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний мэйл хаяг
-            x-internal-id: hemis-api-2.0-persons-child-emails-{childId}-delete   
+                - Хүний мэйл хаяг  
         parameters:
             - 
                 name: id
@@ -6636,7 +6610,6 @@ paths:
                 - application/json
             tags:
                 - Хүний ажил олгогч
-            x-internal-id: hemis-api-2.0-persons-child-employers-get
         post:
             operationId: createPersonEmployers
             summary: Хүний ажил олгогч үүсгэх
@@ -6653,12 +6626,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-employers-item'
+                        $ref: '#/definitions/persons-employers-item2'
             produces:
                 - application/json
             tags:
-                - Хүний ажил олгогч
-            x-internal-id: hemis-api-2.0-persons-child-employers-post   
+                - Хүний ажил олгогч   
         parameters:
             - 
                 name: id
@@ -6710,12 +6682,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-employers-item'
+                        $ref: '#/definitions/persons-employers-item2'
             produces:
                 - application/json
             tags:
                 - Хүний ажил олгогч
-            x-internal-id: hemis-api-2.0-persons-child-employers-{childId}-get
         patch:
             operationId: updatePersonEmployers
             summary: Хүний ажил олгогчийн мэдээлэл засах
@@ -6732,12 +6703,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-employers-item'
+                        $ref: '#/definitions/persons-employers-item2'
             produces:
                 - application/json
             tags:
-                - Хүний ажил олгогч
-            x-internal-id: hemis-api-2.0-persons-child-employers-{childId}-patch      
+                - Хүний ажил олгогч  
         delete:
             operationId: deletePersonEmployers
             summary: Хүний ажил олгогчийн хаяг устгах
@@ -6748,8 +6718,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний ажил олгогч
-            x-internal-id: hemis-api-2.0-persons-child-employers-{childId}-delete   
+                - Хүний ажил олгогч  
         parameters:
             - 
                 name: id
@@ -6856,7 +6825,6 @@ paths:
                 - application/json
             tags:
                 - Хүний шалгалтын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-exams-get
         post:
             operationId: createPersonExams
             summary: Хүний шалгалтын дугаар үүсгэх
@@ -6873,12 +6841,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-exams-item'
+                        $ref: '#/definitions/persons-exams-item2'
             produces:
                 - application/json
             tags:
-                - Хүний шалгалтын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-exams-post   
+                - Хүний шалгалтын дугаар  
         parameters:
             - 
                 name: id
@@ -6930,12 +6897,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-exams-item'
+                        $ref: '#/definitions/persons-exams-item2'
             produces:
                 - application/json
             tags:
-                - Хүний шалгалтын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-exams-{childId}-get
+                - Хүний шалгалтын дугаарt
         patch:
             operationId: updatePersonExams
             summary: Хүний шалгалтын дугаарын мэдээлэл засах
@@ -6952,12 +6918,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-exams-item'
+                        $ref: '#/definitions/persons-exams-item2'
             produces:
                 - application/json
             tags:
-                - Хүний шалгалтын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-exams-{childId}-patch      
+                - Хүний шалгалтын дугаар     
         delete:
             operationId: deletePersonExams
             summary: Хүний шалгалтын дугаарын хаяг устгах
@@ -6969,7 +6934,6 @@ paths:
                 - application/json
             tags:
                 - Хүний шалгалтын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-exams-{childId}-delete   
         parameters:
             - 
                 name: id
@@ -7076,7 +7040,6 @@ paths:
                 - application/json
             tags:
                 - Хүний хэлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-languages-get
         post:
             operationId: createPersonLanguages
             summary: Хүний хэлний дугаар үүсгэх
@@ -7093,12 +7056,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-languages-item'
+                        $ref: '#/definitions/persons-languages-item2'
             produces:
                 - application/json
             tags:
-                - Хүний хэлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-languages-post   
+                - Хүний хэлний дугаар   
         parameters:
             - 
                 name: id
@@ -7150,12 +7112,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-languages-item'
+                        $ref: '#/definitions/persons-languages-item2'
             produces:
                 - application/json
             tags:
                 - Хүний хэлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-languages-{childId}-get
         patch:
             operationId: updatePersonLanguages
             summary: Хүний хэлний дугаарын мэдээлэл засах
@@ -7172,12 +7133,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-languages-item'
+                        $ref: '#/definitions/persons-languages-item2'
             produces:
                 - application/json
             tags:
-                - Хүний хэлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-languages-{childId}-patch      
+                - Хүний хэлний дугаар     
         delete:
             operationId: deletePersonLanguages
             summary: Хүний хэлний дугаарын хаяг устгах
@@ -7188,8 +7148,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний хэлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-languages-{childId}-delete   
+                - Хүний хэлний дугаар  
         parameters:
             - 
                 name: id
@@ -7296,7 +7255,6 @@ paths:
                 - application/json
             tags:
                 - Хүний зээлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-loans-get
         post:
             operationId: createPersonLoans
             summary: Хүний зээлний дугаар үүсгэх
@@ -7313,12 +7271,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-loans-item'
+                        $ref: '#/definitions/persons-loans-item2'
             produces:
                 - application/json
             tags:
-                - Хүний зээлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-loans-post   
+                - Хүний зээлний дугаар   
         parameters:
             - 
                 name: id
@@ -7370,12 +7327,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-loans-item'
+                        $ref: '#/definitions/persons-loans-item2'
             produces:
                 - application/json
             tags:
                 - Хүний зээлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-loans-{childId}-get
         patch:
             operationId: updatePersonLoans
             summary: Хүний зээлний дугаарын мэдээлэл засах
@@ -7392,12 +7348,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-loans-item'
+                        $ref: '#/definitions/persons-loans-item2'
             produces:
                 - application/json
             tags:
-                - Хүний зээлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-loans-{childId}-patch      
+                - Хүний зээлний дугаар   
         delete:
             operationId: deletePersonLoans
             summary: Хүний зээлний дугаарын хаяг устгах
@@ -7408,8 +7363,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний зээлний дугаар
-            x-internal-id: hemis-api-2.0-persons-child-loans-{childId}-delete   
+                - Хүний зээлний дугаар  
         parameters:
             - 
                 name: id
@@ -7516,7 +7470,6 @@ paths:
                 - application/json
             tags:
                 - Хүний материалын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-materials-get
         post:
             operationId: createPersonMaterials
             summary: Хүний материалын дугаар үүсгэх
@@ -7533,12 +7486,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-materials-item'
+                        $ref: '#/definitions/persons-materials-item2'
             produces:
                 - application/json
             tags:
-                - Хүний материалын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-materials-post   
+                - Хүний материалын дугаар  
         parameters:
             - 
                 name: id
@@ -7590,12 +7542,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-materials-item'
+                        $ref: '#/definitions/persons-materials-item2'
             produces:
                 - application/json
             tags:
                 - Хүний материалын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-materials-{childId}-get
         patch:
             operationId: updatePersonMaterials
             summary: Хүний материалын дугаарын мэдээлэл засах
@@ -7612,12 +7563,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/persons-materials-item'
+                        $ref: '#/definitions/persons-materials-item2'
             produces:
                 - application/json
             tags:
-                - Хүний материалын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-materials-{childId}-patch      
+                - Хүний материалын дугаар     
         delete:
             operationId: deletePersonMaterials
             summary: Хүний материалын дугаарын хаяг устгах
@@ -7628,8 +7578,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Хүний материалын дугаар
-            x-internal-id: hemis-api-2.0-persons-child-materials-{childId}-delete   
+                - Хүний материалын дугаар  
         parameters:
             - 
                 name: id
@@ -7741,9 +7690,9 @@ paths:
                 -  
                     lang: cURL
                     source: '
-                            curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
+                            curl -X GET -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
                             -H "Content-Type: application/json" 
-                            -d {"name": "CASH", "type": "Cash"} "https://hemis.edu.mn/api/2.0/resources"
+                            "https://hr.csc.gov.mn/api/rest/2.0/resources"
                             '
                 -  
                     lang: Java
@@ -7752,7 +7701,7 @@ paths:
 
                             MediaType mediaType = MediaType.parse("application/json");
                             Request request = new Request.Builder()
-                            .url("https://hemis.edu.mn/api/2.0/resources")
+                            .url("https://hr.csc.gov.mn/api/rest/2.0/resources")
                             .get()
                             .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
                             .addHeader("content-type", "application/json")
@@ -7776,7 +7725,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/resources-item'
+                        $ref: '#/definitions/resources-item2'
             produces:
                 - application/json
             tags:
@@ -7812,7 +7761,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/resources-item'
+                        $ref: '#/definitions/resources-item2'
             produces:
                 - application/json
             tags:
@@ -7834,7 +7783,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/resources-item'
+                        $ref: '#/definitions/resources-item2'
             produces:
                 - application/json
             tags:
@@ -7943,9 +7892,9 @@ paths:
                 -  
                     lang: cURL
                     source: '
-                            curl -X POST -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
+                            curl -X GET -H "Authorization: Bearer 6d151216ef504f65b8ff6e9e9e8356d3"
                             -H "Content-Type: application/json" 
-                            -d {"name": "CASH", "type": "Cash"} "https://hemis.edu.mn/api/2.0/disciplinaries"
+                            "https://hr.csc.gov.mn/api/rest/2.0/disciplinaries"
                             '
                 -  
                     lang: Java
@@ -7954,7 +7903,7 @@ paths:
 
                             MediaType mediaType = MediaType.parse("application/json");
                             Request request = new Request.Builder()
-                            .url("https://hemis.edu.mn/api/2.0/diciplinaries")
+                            .url("https://hr.csc.gov.mn/api/rest/2.0/diciplinaries")
                             .get()
                             .addHeader("Authorization", "Bearer 6d151216ef504f65b8ff6e9e9e8356d3")
                             .addHeader("content-type", "application/json")
@@ -7978,7 +7927,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-item'
+                        $ref: '#/definitions/disciplinaries-item2'
             produces:
                 - application/json
             tags:
@@ -8014,7 +7963,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-item'
+                        $ref: '#/definitions/disciplinaries-item2'
             produces:
                 - application/json
             tags:
@@ -8036,7 +7985,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-item'
+                        $ref: '#/definitions/disciplinaries-item2'
             produces:
                 - application/json
             tags:
@@ -8053,7 +8002,6 @@ paths:
                 - application/json
             tags:
                 - Сахилгын зөрчил
-            x-internal-id: hemis-api-2.0-disciplinaries-{id}-delete
         parameters:
             - 
                 name: id
@@ -8140,7 +8088,6 @@ paths:
                 - application/json
             tags:
                 - Сахилгын зөрчлийн гишүүн
-            x-internal-id: hemis-api-2.0-diciplinaries-child-members-get
         post:
             operationId: createDisciplinariesMembers
             summary: Сахилгын зөрчлийн гишүүнийг үүсгэх
@@ -8157,12 +8104,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-members-item'
+                        $ref: '#/definitions/disciplinaries-members-item2'
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн гишүүн
-            x-internal-id: hemis-api-2.0-diciplinaries-child-members-post   
+                - Сахилгын зөрчлийн гишүүн   
         parameters:
             - 
                 name: id
@@ -8214,12 +8160,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-members-item'
+                        $ref: '#/definitions/disciplinaries-members-item2'
             produces:
                 - application/json
             tags:
                 - Сахилгын зөрчлийн гишүүн
-            x-internal-id: hemis-api-2.0-disciplinaries-child-members-{childId}-get
         patch:
             operationId: updateDisciplinariesMembers
             summary: Сахилгын зөрчлийн гишүүний мэдээлэл засах
@@ -8236,12 +8181,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-members-item'
+                        $ref: '#/definitions/disciplinaries-members-item2'
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн гишүүн
-            x-internal-id: hemis-api-2.0-disciplinaries-child-members-{childId}-patch      
+                - Сахилгын зөрчлийн гишүүн    
         delete:
             operationId: deleteDisciplinariesMembers
             summary: Сахилгын зөрчлийн гишүүн устгах
@@ -8252,8 +8196,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн гишүүн
-            x-internal-id: hemis-api-2.0-disciplinaries-child-members-{childId}-delete   
+                - Сахилгын зөрчлийн гишүүн   
         parameters:
             - 
                 name: id
@@ -8360,7 +8303,6 @@ paths:
                 - application/json
             tags:
                 - Сахилгын зөрчлийн үндэслэл
-            x-internal-id: hemis-api-2.0-diciplinaries-child-reasons-get
         post:
             operationId: createDisciplinariesReasons
             summary: Сахилгын зөрчлийн үндэслэлийг үүсгэх
@@ -8377,12 +8319,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-reasons-item'
+                        $ref: '#/definitions/disciplinaries-reasons-item2'
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн үндэслэл
-            x-internal-id: hemis-api-2.0-diciplinaries-child-reasons-post   
+                - Сахилгын зөрчлийн үндэслэл   
         parameters:
             - 
                 name: id
@@ -8434,12 +8375,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-reasons-item'
+                        $ref: '#/definitions/disciplinaries-reasons-item2'
             produces:
                 - application/json
             tags:
                 - Сахилгын зөрчлийн үндэслэл
-            x-internal-id: hemis-api-2.0-disciplinaries-child-reasons-{childId}-get
         patch:
             operationId: updateDisciplinariesReasons
             summary: Сахилгын зөрчлийн үндэслэлийн мэдээлэл засах
@@ -8456,12 +8396,11 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-reasons-item'
+                        $ref: '#/definitions/disciplinaries-reasons-item2'
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн үндэслэл
-            x-internal-id: hemis-api-2.0-disciplinaries-child-reasons-{childId}-patch      
+                - Сахилгын зөрчлийн үндэслэл     
         delete:
             operationId: deleteDisciplinariesReasons
             summary: Сахилгын зөрчлийн үндэслэл устгах
@@ -8472,8 +8411,7 @@ paths:
             produces:
                 - application/json
             tags:
-                - Сахилгын зөрчлийн үндэслэл
-            x-internal-id: hemis-api-2.0-disciplinaries-child-reasons-{childId}-delete   
+                - Сахилгын зөрчлийн үндэслэл   
         parameters:
             - 
                 name: id
@@ -8580,7 +8518,6 @@ paths:
                 - application/json
             tags:
                 - Сахилгын зөрчлийн үе шат
-            x-internal-id: hemis-api-2.0-diciplinaries-child-stages-get
         post:
             operationId: createDisciplinariesStages
             summary: Сахилгын зөрчлийн үе шатыг үүсгэх
@@ -8597,7 +8534,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-stages-item'
+                        $ref: '#/definitions/disciplinaries-stages-item2'
             produces:
                 - application/json
             tags:
@@ -8654,7 +8591,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-stages-item'
+                        $ref: '#/definitions/disciplinaries-stages-item2'
             produces:
                 - application/json
             tags:
@@ -8676,7 +8613,7 @@ paths:
                 default:
                     description: Үндсэн буцаах дата нь дараах хүснэгтэд тодорхойлсны дагуу байна.
                     schema:
-                        $ref: '#/definitions/disciplinaries-stages-item'
+                        $ref: '#/definitions/disciplinaries-stages-item2'
             produces:
                 - application/json
             tags:
@@ -11987,137 +11924,201 @@ definitions:
                     $ref: '#/definitions/link'
     persons-item:
         properties:
+            PersonCountry:
+                title: Иргэншил
+                maxLength: 30
+                type: string
+                description: Иргэншил
+            PersonCivilStatus:
+                title: Иргэний төлөв
+                maxLength: 30
+                type: string
+                description: Иргэний төлөв
+            PersonGender:
+                title: Хүйс
+                maxLength: 30
+                type: string
+                description: Хүйс
+            PersonBirthCountry:
+                title: Төрсөн улс
+                maxLength: 30
+                type: string
+                description: Төрсөн улс
+            PersonBloodGroup:
+                title: Цусны бүлэг
+                maxLength: 30
+                type: string
+                description: Цусны бүлэг
+            PersonMotherLanguage:
+                title: Эх хэл
+                maxLength: 30
+                type: string
+                description: Эх хэл
+            PersonMaritalStatus:
+                title: Гэрлэлтийн байдал
+                maxLength: 30
+                type: string
+                description: Гэрлэлтийн байдал
+            PersonEthnicity:
+                title: Үндэс, угсаа
+                maxLength: 30
+                type: string
+                description: Үндэс, угсаа
+            DisabilityCategory:
+                title: Хөгжлийн бэрхшээлтэй эсэх
+                maxLength: 30
+                type: string
+                description: Хөгжлийн бэрхшээлтэй эсэх
+            DisabilityReason:
+                title: Шалтгаан
+                maxLength: 30
+                type: string
+                description: Шалтгаан
+            HighestEducationLevel:
+                title: Эзэмшсэн боловсролын түвшин
+                maxLength: 30
+                type: string
+                description: Эзэмшсэн боловсролын түвшин
+            Status:
+                title: Төлөв
+                maxLength: 1
+                type: string
+                description: Төлөв
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-item2:
+        properties:
             PersonId:
                 format: int64
                 type: integer
                 description: Хүнийн ID
                 title: Хүнийн ID
                 readOnly: true
-            PersonCode:
-                title: Код
+            PersonStartDate:
+                format: date-time
+                type: string
+                description: Бүртгэсэн огноо
+                title: Бүртгэсэн огноо
+            PersonCountry:
+                title: Иргэншил
                 maxLength: 30
                 type: string
-                description: Хүнийн код
-            Name:
-                title: Нэр
+                description: Иргэншил
+            PersonIdentifierNumber:
+                title: Регистрийн дугаар
                 maxLength: 240
                 type: string
-                description: Хүнийн нэр
-            Description:
-                title: Тайлбар
-                maxLength: 500
+                description: Регистрийн дугаар
+            PersonCivilId:
+                title: Иргэний ID
+                maxLength: 240
                 type: string
-                description: Хүнийн тайлбар
-            OrganizationType:
-                title: Төрөл
+                description: Иргэний ID
+            PersonCivilStatus:
+                title: Иргэний төлөв
                 maxLength: 30
                 type: string
-                description: Байгууллагын төрөл
-            OrganizationSubtypeFlag:
-                title: Дэд төрөлтэй эсэх
-                maxLength: 1
-                type: string
-                description: Дэд төрөлтэй эсэх [Y/N]
-            OrganizationSubtype:
-                title: Дэд төрөл
-                maxLength: 30
-                type: string
-                description: Байгууллагын дэд төрөл
-            IdentifierType:
-                title: Тодорхойлох төрөл
-                maxLength: 30
-                type: string
-                description: 'Хүнийн мэдээлэл тодорхойлох төрөл. Жнь: Байгууллагын регистрийн дугаар'
-            IdentifierNumber:
-                title: Тодорхойлох дугаар
-                maxLength: 30
-                type: string
-                description: 'Хүнийн мэдээлэл тодорхойлох дугаар'
-            IdentificationStatus:
-                title: Тодорхойлох төлөв
-                maxLength: 30
-                type: string
-                description: 'Хүнийн мэдээлэл тодорхойлох төлөв'
-            LegislationCode:
-                title: Хуулийн код. Улсын код байна.
-                maxLength: 30
-                type: string
-                description: Хуулийн код. Улсын код байна.
-            DatasetId:
-                format: int64
-                type: integer
-                description: Мэдээллийн хүрээний ID
-                title: Мэдээллийн хүрээний ID
-            ManagerPersonId:
-                format: int64
-                type: integer
-                description: Удирдлагын хүний ID
-                title: Удирдлагын хүний ID
-            ManagerAssignmentId:
-                format: int64
-                type: integer
-                description: Удирдлагын ажил эрхлэлтийн ID
-                title: Удирдлагын ажил эрхлэлтийн ID
-            EstablishmentDate:
+                description: Иргэний төлөв
+            PersonCivilSyncedDate:
                 format: date
                 type: string
-                description: Байгуулагдсан огноо
-                title: Байгуулагдсан огноо
-            IndustryCode:
-                title: Эдийн засгийн салбар
+                description: Мэдээлэл шалгасан огноо
+                title: Мэдээлэл шалгасан огноо
+            PersonFirstName:
+                title: Нэр
+                maxLength: 2000
+                type: string
+                description: Нэр
+            PersonLastName:
+                title: Эцэг(эх)-ийн нэр
+                maxLength: 2000
+                type: string
+                description: Эцэг(эх)-ийн нэр
+            PersonFamilyName:
+                title: Ургийн овог
+                maxLength: 2000
+                type: string
+                description: Ургийн овог
+            PersonGender:
+                title: Хүйс
                 maxLength: 30
                 type: string
-                description: Эдийн засгийн салбар
-            LempGeneralGovernor:
-                title: Ерөнхийлөн захирагч
+                description: Хүйс
+            PersonBirthDate:
+                format: date
+                type: string
+                description: Төрсөн огноо
+                title: Төрсөн огноо
+            PersonBirthCountry:
+                title: Төрсөн улс
                 maxLength: 30
                 type: string
-                description: Ерөнхийлөн захирагч
-            AdministrationType:
-                title: Засаг захиргааны төрөл
-                maxLength: 30
-                type: string
-                description: Засаг захиргааны төрөл
-            AdministrationLevelFlag:
-                title: Засаг захиргааны түвшинтэй эсэх [Y/N]
-                maxLength: 1
-                type: string
-                description: Засаг захиргааны түвшинтэй эсэх [Y/N]
-            AdministrationLevel:
-                title: Засаг захиргааны түвшин
-                maxLength: 30
-                type: string
-                description: Засаг захиргааны түвшин
-            AdministrationFlag:
-                title: Засаг захиргааны нэгжтэй эсэх [Y/N]
-                maxLength: 1
-                type: string
-                description: Засаг захиргааны нэгжтэй эсэх [Y/N]
-            Administration:
-                title: Засаг захиргааны нэгж
-                maxLength: 30
-                type: string
-                description: Засаг захиргааны нэгж
-            WorkStartTime:
-                title: Ажил эхлэх цаг
+                description: Төрсөн улс
+            PersonBirthPalace:
+                title: Төрсөн газар
                 maxLength: 240
                 type: string
-                description: Ажил эхлэх цаг (HH:MM)
-            WorkEndTime:
-                title: Ажил дуусах цаг
-                maxLength: 240
-                type: string
-                description: Ажил дуусах цаг (HH:MM)
-                readOnly: true
-            WorkingHours:
-                type: number
-                description: 'Ажлын стандарт ачаалал. Жнь: Ихэнх байгууллага ажлын 7 хоногт 40 цагийн ачаалалтай байдаг.'
-                title: 'Ажлын стандарт ачаалал (цагаар)'
-            WorkingHoursFrequency:
-                title: Ажлын стандарт ачааллын давтамж
+                description: Төрсөн газар
+            PersonBloodGroup:
+                title: Цусны бүлэг
                 maxLength: 30
                 type: string
-                description: 'Ажлын стандарт ачааллын давтамж. Жнь: 7 хоног, сар, ...'
+                description: Цусны бүлэг
+            PersonMotherLanguage:
+                title: Эх хэл
+                maxLength: 30
+                type: string
+                description: Эх хэл
+            PersonMaritalStatus:
+                title: Гэрлэлтийн байдал
+                maxLength: 30
+                type: string
+                description: Гэрлэлтийн байдал
+            PersonEthnicity:
+                title: Үндэс, угсаа
+                maxLength: 30
+                type: string
+                description: Үндэс, угсаа
+            PersonDeathDate:
+                format: date
+                type: string
+                description: Нас барсан огноо
+                title: Нас барсан огноо
+            PersonImage:
+                format: base64
+                type: string
+                description: Зураг
+                title: Зураг
+            DisabilityCategory:
+                title: Хөгжлийн бэрхшээлтэй эсэх
+                maxLength: 30
+                type: string
+                description: Хөгжлийн бэрхшээлтэй эсэх
+            DisabilityReason:
+                title: Шалтгаан
+                maxLength: 30
+                type: string
+                description: Шалтгаан
+            DisabilityDegree:
+                format: int64
+                type: integer
+                description: Чадвар алдалтын хувь
+                title: Чадвар алдалтын хувь
+            DisabilityQuotaFte:
+                format: int64
+                type: integer
+                description: БЦТ квот
+                title: БЦТ квот
+            HighestEducationLevel:
+                title: Эзэмшсэн боловсролын түвшин
+                maxLength: 30
+                type: string
+                description: Эзэмшсэн боловсролын түвшин
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12188,51 +12189,105 @@ definitions:
         type: object
     persons-addresses-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
             AddressType:
                 title: Хаягийн төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
+                description: Хаягийн төрөл
+            AddressCountry:
                 title: Улс
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
+                description: Улс
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-addresses-item2:
+        properties:
+            EnterpriseId:
+                format: int64
+                type: integer
+                description: Энтерпрайз
+                title: Энтерпрайз
+            ContactAddressId:
+                format: int64
+                type: integer
+                description: Холбогдох хүний хаяг байршил
+                title: Холбогдох хүний хаяг байршил
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonContactId:
+                format: int64
+                type: integer
+                description: Холбогдох хүн
+                title: Холбогдох хүн
+            PrimaryFlag:
+                title: Үндсэн эсэх
+                maxLength: 1
+                type: string
+                description: Үндсэн эсэх
+            AddressType:
+                title: Хаягийн төрөл
+                maxLength: 30
+                type: string
+                description: Хаягийн төрөл
+            AddressCountry:
+                title: Улс
+                maxLength: 30
+                type: string
+                description: Улс
             AddressFormatId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
+                description: Хаягийн формат
+                title: Хаягийн формат
             AddressId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
+                description: Хаяг, байршил
+                title: Хаяг, байршил
             SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                title: Хаяг
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
+                description: Хаяг
             MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                title: Хаягийг бүртгэх загвартай адил форматлан харуулах текст
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Хаягийг бүртгэх загвартай адил форматлан харуулах текст
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12303,51 +12358,140 @@ definitions:
         type: object
     persons-awards-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            AwardCategory:
+                title: Цол, зэрэг, шагналын категори
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Цол, зэрэг, шагналын категори
+            AwardType:
+                title: Цол, зэрэг, шагналын төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Цол, зэрэг, шагналын төрөл
+            AwardSubtype:
+                title: Цол, зэрэг, шагналын дэд төрөл
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагналын дэд төрөл
+            AuthorityCountry:
+                title: Цол, зэрэг, шагнал олгосон байгууллагын улс
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагнал олгосон байгууллагын улс
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-awards-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonAwardId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Хүний шагнал
+                title: Хүний шагнал
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            AwardCategory:
+                title: Цол, зэрэг, шагналын категори
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагналын категори
+            AwardType:
+                title: Цол, зэрэг, шагналын төрөл
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагналын төрөл
+            AwardSubtype:
+                title: Цол, зэрэг, шагналын дэд төрөл
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагналын дэд төрөл
+            AwardNumber:
+                title: Цол, зэрэг, шагналын дугаар
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагналын дугаар
+            IssuedDate:
+                format: date-time
+                type: string
+                description: Олгосон огноо
+                title: Олгосон огноо
+            ExpiryDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            AuthorityId:
+                format: int64
+                type: integer
+                description: Цол, зэрэг, шагнал олгосон байгууллага
+                title: Цол, зэрэг, шагнал олгосон байгууллага
+            AuthorityName:
+                title: Цол, зэрэг, шагнал олгосон байгууллага
+                maxLength: 240
+                type: string
+                description: Цол, зэрэг, шагнал олгосон байгууллага
+            AuthorityDesc:
+                title: Байгууллагын тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Байгууллагын тайлбар
+            AuthorityCountry:
+                title: Цол, зэрэг, шагнал олгосон байгууллагын улс
+                maxLength: 30
+                type: string
+                description: Цол, зэрэг, шагнал олгосон байгууллагын улс
+            AuthorityAddress:
+                title: Цол, зэрэг, шагнал олгосон байгууллагын хаяг
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Цол, зэрэг, шагнал олгосон байгууллагын хаяг
+            Comments:
+                title: Нэмэлт тайлбар
+                maxLength: 4000
+                type: string
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12418,51 +12562,95 @@ definitions:
         type: object
     persons-conditions-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            ApartmentType:
+                title: Амьдарч буй сууцны төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Амьдарч буй сууцны төрөл
+            PropertyType:
+                title: Эзэмшлийн төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Эзэмшлийн төрөл
+            PersonAddressId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Хүний хаяг, байршил
+                title: Хүний хаяг, байршил
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-conditions-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonConditionId:
+                format: int64
+                type: integer
+                description: Хүний амьдрах нөхцөл
+                title: Хүний амьдрах нөхцөл
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            ApartmentType:
+                title: Амьдарч буй сууцны төрөл
+                maxLength: 30
+                type: string
+                description: Амьдарч буй сууцны төрөл
+            PropertyType:
+                title: Эзэмшлийн төрөл
+                maxLength: 30
+                type: string
+                description: Эзэмшлийн төрөл
+            PersonAddressId:
+                format: int64
+                type: integer
+                description: Хүний хаяг, байршил
+                title: Хүний хаяг, байршил
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
-                maxLength: 4000
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12533,51 +12721,205 @@ definitions:
         type: object
     persons-educations-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            SchoolType:
+                title: Сургуулийн төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
+                description: Сургуулийн төрөл
+            SchoolCountry:
                 title: Улс
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Улс
+            EducationLevel:
+                title: Боловсролын түвшин
+                maxLength: 30
+                type: string
+                description: Боловсролын түвшин
+            EducationFieldType:
+                title: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+                maxLength: 30
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+            EducationDegreeType:
+                title: Боловсролын зэргийн төрөл
+                maxLength: 30
+                type: string
+                description: Боловсролын зэргийн төрөл
+            FinancialType:
+                title: Санхүүжилтын хэлбэр
+                maxLength: 30
+                type: string
+                description: Санхүүжилтын хэлбэр
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-educations-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonEducationId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Хүний боловсрол
+                title: Хүний боловсрол
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            SchoolType:
+                title: Сургуулийн төрөл
+                maxLength: 30
+                type: string
+                description: Сургуулийн төрөл
+            SchoolId:
+                title: Сургууль
+                maxLength: 30
+                type: string
+                description: Сургууль
+            SchoolName:
+                title: Сургуулийн нэр
+                maxLength: 240
+                type: string
+                description: Сургуулийн нэр
+            SchoolDesc:
+                title: Сургуулийн тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Сургуулийн тайлбар
+            SchoolCountry:
+                title: Улс
+                maxLength: 30
+                type: string
+                description: Улс
+            EnrolledDate:
+                format: date-time
+                type: string
+                description: Элссэн огноо
+                title: Элссэн огноо
+            GraduatedFlag:
+                title: Төгссөн эсэх
+                maxLength: 1
+                type: string
+                description: Төгссөн эсэх
+            GraduatedDate:
+                format: date-time
+                type: string
+                description: Төгссөн огноо
+                title: Төгссөн огноо
+            EducationLevel:
+                title: Боловсролын түвшин
+                maxLength: 30
+                type: string
+                description: Боловсролын түвшин
+            EducationFieldType:
+                title: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+                maxLength: 30
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+            EducationField:
+                title: Боловсролын/Мэргэжлийн чиглэл
+                maxLength: 30
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэл
+            Major:
+                title: Үндсэн эзэмшсэн мэргэжил
+                maxLength: 240
+                type: string
+                description: Үндсэн эзэмшсэн мэргэжил
+            Minor:
+                title: Хоёрдахь боловсрол/мэргэжил
+                maxLength: 240
+                type: string
+                description: Хоёрдахь боловсрол/мэргэжил
+            Specialization:
+                title: Нарийвчилсан мэргэжил
+                maxLength: 240
+                type: string
+                description: Нарийвчилсан мэргэжил
+            EducationDegreeFlag:
+                title: Боловсролын зэрэг авсан эсэх
+                maxLength: 1
+                type: string
+                description: Боловсролын зэрэг авсан эсэх
+            EducationDegreeType:
+                title: Боловсролын зэргийн төрөл
+                maxLength: 30
+                type: string
+                description: Боловсролын зэргийн төрөл
+            EducationDegreeNumber:
+                title: Гэрчилгээ, дипломын дугаар
+                maxLength: 240
+                type: string
+                description: Гэрчилгээ, дипломын дугаар
+            EducationDegreeName:
+                title: Боловсролын зэргийн нэр
+                maxLength: 240
+                type: string
+                description: Боловсролын зэргийн нэр
+            Gpa:
+                format: int64
+                type: integer
+                description: Голч оноо
+                title: Голч оноо
+            Gma:
+                format: int64
+                type: integer
+                description: Дундаж дүн
+                title: Дундаж дүн
+            VerifiedFlag:
+                title: Баталгаажуулсан эсэх
+                maxLength: 1
+                type: string
+                description: Баталгаажуулсан эсэх
+            VerifiedDate:
+                format: date-time
+                type: string
+                description: Баталгаажуулсан огноо
+                title: Баталгаажуулсан огноо
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12608,6 +12950,31 @@ definitions:
                 type: string
                 description: Тухайн бичлэгийг өөрчилсөн сүүлийн өдөр, цаг, минут.
                 title: Сүүлд өөрчилсөн огноо
+            FinancialType:
+                title: Санхүүжилтын хэлбэр
+                maxLength: 30
+                type: string
+                description: Санхүүжилтын хэлбэр
+            EducationFieldName:
+                title: Боловсролын/Мэргэжлийн чиглэлийн нэр
+                maxLength: 240
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэлийн нэр
+            EnterpriseId1:
+                format: int32
+                type: integer
+                description: Энтерпрайз
+                title: Энтерпрайз
+            EducationFieldType1:
+                title: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+                maxLength: 30
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэлийн төрөл
+            EducationField1:
+                title: Боловсролын/Мэргэжлийн чиглэл
+                maxLength: 30
+                type: string
+                description: Боловсролын/Мэргэжлийн чиглэл
             links:
                 items:
                     $ref: '#/definitions/link'
@@ -12648,51 +13015,73 @@ definitions:
         type: object
     persons-emails-item:
         properties:
-            businessUnitId:
+            EmailType:
+                title: И-Мэйл хаягийн төрөл
+                maxLength: 30
+                type: string
+                description: И-Мэйл хаягийн төрөл
+    persons-emails-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonEmailId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
+                description: Хүний мэйл хаяг
+                title: Хүний мэйл хаяг
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
             PrimaryFlag:
                 title: Үндсэн эсэх
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+                description: Үндсэн эсэх
+            EmailType:
+                title: И-Мэйл хаягийн төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: И-Мэйл хаягийн төрөл
+            EmailAddress:
+                title: И-Мэйл хаяг
+                maxLength: 240
+                type: string
+                description: И-Мэйл хаяг
+            ActionType:
+                title: Үйлдлийн төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Үйлдлийн төрөл
+            ActionId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
-                maxLength: 4000
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
-                maxLength: 4000
-                type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12763,51 +13152,145 @@ definitions:
         type: object
     persons-employers-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            EmployerType:
+                title: Байгууллагын төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
+                description: Байгууллагын төрөл
+            EmployerSubtype:
+                title: Ажил олгогчийн дэд төрөл
+                maxLength: 30
+                type: string
+                description: Ажил олгогчийн дэд төрөл
+            EmployerCountry:
                 title: Улс
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Улс
+            EmployerIndustry:
+                title: Байгууллагын эдийн засгийн салбар
+                maxLength: 30
+                type: string
+                description: Байгууллагын эдийн засгийн салбар
+            EmployerPropertyType:
+                title: Байгууллагын өмчийн хэлбэр
+                maxLength: 30
+                type: string
+                description: Байгууллагын өмчийн хэлбэр
+            EmployerResponsibilityType:
+                title: Байгууллагын хариуцлагын хэлбэр
+                maxLength: 30
+                type: string
+                description: Байгууллагын хариуцлагын хэлбэр
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-employers-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonEmployerId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Хүний ажил олгогч
+                title: Хүний ажил олгогч
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            EmployerType:
+                title: Байгууллагын төрөл
+                maxLength: 30
+                type: string
+                description: Байгууллагын төрөл
+            EmployerSubtypeFlag:
+                title: Дэд төрөлтэй эсэх
+                maxLength: 1
+                type: string
+                description: Дэд төрөлтэй эсэх
+            EmployerSubtype:
+                title: Ажил олгогчийн дэд төрөл
+                maxLength: 30
+                type: string
+                description: Ажил олгогчийн дэд төрөл
+            EmployerId:
+                title: Ажил олгогч
+                maxLength: 30
+                type: string
+                description: Ажил олгогч
+            EmployerName:
+                title: Албан байгууллагын нэр
+                maxLength: 240
+                type: string
+                description: Албан байгууллагын нэр
+            EmployerDesc:
+                title: Ажил олгогчийн тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Ажил олгогчийн тайлбар
+            EmployerCountry:
+                title: Улс
+                maxLength: 30
+                type: string
+                description: Улс
+            EmployerIndustry:
+                title: Байгууллагын эдийн засгийн салбар
+                maxLength: 30
+                type: string
+                description: Байгууллагын эдийн засгийн салбар
+            EmployerPropertyType:
+                title: Байгууллагын өмчийн хэлбэр
+                maxLength: 30
+                type: string
+                description: Байгууллагын өмчийн хэлбэр
+            EmployerResponsibilityType:
+                title: Байгууллагын хариуцлагын хэлбэр
+                maxLength: 30
+                type: string
+                description: Байгууллагын хариуцлагын хэлбэр
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Нэмэлт тайлбар
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12878,51 +13361,110 @@ definitions:
         type: object
     persons-exams-item:
         properties:
-            businessUnitId:
+            ExamType:
+                title: Шалгалтын төрөл
+                maxLength: 30
+                type: string
+                description: Шалгалтын төрөл
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-exams-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonExamId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
+                description: Хүний шалгалтын дугаар
+                title: Хүний шалгалтын дугаар
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            ExamType:
+                title: Шалгалтын төрөл
+                maxLength: 30
+                type: string
+                description: Шалгалтын төрөл
+            ExamName:
+                title: Шалгалтын нэр
+                maxLength: 240
+                type: string
+                description: Шалгалтын нэр
+            ExamDate:
+                format: date-time
+                type: string
+                description: Шалгалт өгсөн огноо
+                title: Шалгалт өгсөн огноо
+            ExamPoint:
+                format: int64
+                type: integer
+                description: Авсан оноо
+                title: Авсан оноо
+            ExamMaxPoint:
+                format: int64
+                type: integer
+                description: Авах дээд оноо
+                title: Авах дээд оноо
+            PassedFlag:
+                title: Шалгалтад тэнцсэн эсэх
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
-                maxLength: 30
+                description: Шалгалтад тэнцсэн эсэх
+            ExpiryFlag:
+                title: Дуусах огноотой эсэх
+                maxLength: 1
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
-                maxLength: 30
+                description: Дуусах огноотой эсэх
+            ExpiryDate:
+                format: date-time
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
-                format: int64
-                type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
-                format: int64
-                type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Дуусах огноо
+                title: Дуусах огноо
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
-                maxLength: 4000
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -12993,51 +13535,135 @@ definitions:
         type: object
     persons-languages-item:
         properties:
-            businessUnitId:
+            PersonLanguage:
+                title: Хэл
+                maxLength: 30
+                type: string
+                description: Хэл
+            ReadingSkillLevel:
+                title: Унших чадвар
+                maxLength: 30
+                type: string
+                description: Унших чадвар
+            WritingSkillLevel:
+                title: Бичих чадвар
+                maxLength: 30
+                type: string
+                description: Бичих чадвар
+            ListeningSkillLevel:
+                title: Сонсох чадвар
+                maxLength: 30
+                type: string
+                description: Сонсох чадвар
+            SpeakingSkillLevel:
+                title: Ярих чадвар
+                maxLength: 30
+                type: string
+                description: Ярих чадвар
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-languages-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonLanguageId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
+                description: Хүний хэлний дугаар
+                title: Хүний хэлний дугаар
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            PersonLanguage:
+                title: Хэл
+                maxLength: 30
+                type: string
+                description: Хэл
+            ReadingSkillLevel:
+                title: Унших чадвар
+                maxLength: 30
+                type: string
+                description: Унших чадвар
+            WritingSkillLevel:
+                title: Бичих чадвар
+                maxLength: 30
+                type: string
+                description: Бичих чадвар
+            ListeningSkillLevel:
+                title: Сонсох чадвар
+                maxLength: 30
+                type: string
+                description: Сонсох чадвар
+            SpeakingSkillLevel:
+                title: Ярих чадвар
+                maxLength: 30
+                type: string
+                description: Ярих чадвар
+            NativeFlag:
+                title: Эх хэл эсэх
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
-                maxLength: 30
+                description: Эх хэл эсэх
+            TranslateFlag:
+                title: Орчуулах чадвартай эсэх
+                maxLength: 1
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
-                maxLength: 30
+                description: Орчуулах чадвартай эсэх
+            TeachFlag:
+                title: Заах чадвартай эсэх
+                maxLength: 1
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
-                format: int64
-                type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
-                format: int64
-                type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Заах чадвартай эсэх
+            EvaluatedDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
-                maxLength: 4000
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13108,51 +13734,195 @@ definitions:
         type: object
     persons-loans-item:
         properties:
-            businessUnitId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
-                format: int64
-                type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            LoanType:
+                title: Зээлийн зориулалт/төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Зээлийн зориулалт/төрөл
+            LoanCurrency:
+                title: Вальютын төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Вальютын төрөл
+            LoanTermsUom:
+                title: Зээлийн хугацааны төрөл
+                maxLength: 30
+                type: string
+                description: Зээлийн хугацааны төрөл
+            InterestRateUom:
+                title: Зээлийн хүүний нэгж
+                maxLength: 30
+                type: string
+                description: Зээлийн хүүний нэгж
+            RepaymentFrequency:
+                title: Эргэн төлөлтийн давтамж
+                maxLength: 30
+                type: string
+                description: Эргэн төлөлтийн давтамж
+            BorrowerType:
+                title: Зээлдэгчийн төрөл
+                maxLength: 30
+                type: string
+                description: Зээлдэгчийн төрөл
+            BorrowerCountry:
+                title: Зээлдэгчийн улс
+                maxLength: 30
+                type: string
+                description: Зээлдэгчийн улс
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-loans-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonLoanId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Хүний зээлний дугаар
+                title: Хүний зээлний дугаар
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            LoanType:
+                title: Зээлийн зориулалт/төрөл
+                maxLength: 30
+                type: string
+                description: Зээлийн зориулалт/төрөл
+            LoanDate:
+                format: date-time
+                type: string
+                description: Зээл авсан огноо
+                title: Зээл авсан огноо
+            LoanAmount:
+                format: int64
+                type: integer
+                description: Зээлийн дүн
+                title: Зээлийн дүн
+            EndBalanceAmount:
+                format: int64
+                type: integer
+                description: Зээлийн үлдэгдэл дүн
+                title: Зээлийн үлдэгдэл дүн
+            LoanCurrency:
+                title: Вальютын төрөл
+                maxLength: 30
+                type: string
+                description: Вальютын төрөл
+            LoanTerms:
+                format: int64
+                type: integer
+                description: Зээлийн хугацаа
+                title: Зээлийн хугацаа
+            LoanTermsUom:
+                title: Зээлийн хугацааны төрөл
+                maxLength: 30
+                type: string
+                description: Зээлийн хугацааны төрөл
+            InterestRate:
+                format: int64
+                type: integer
+                description: Зээлийн хүү
+                title: Зээлийн хүү
+            InterestRateUom:
+                title: Зээлийн хүүний нэгж
+                maxLength: 30
+                type: string
+                description: Зээлийн хүүний нэгж
+            RepaymentAmount:
+                format: int64
+                type: integer
+                description: Эргэн төлөлтийн дүн
+                title: Эргэн төлөлтийн дүн
+            RepaymentFrequency:
+                title: Эргэн төлөлтийн давтамж
+                maxLength: 30
+                type: string
+                description: Эргэн төлөлтийн давтамж
+            BorrowerType:
+                title: Зээлдэгчийн төрөл
+                maxLength: 30
+                type: string
+                description: Зээлдэгчийн төрөл
+            BorrowerPersonId:
+                format: int64
+                type: integer
+                description: Зээлдэгчийн хүн
+                title: Зээлдэгчийн хүн
+            BorrowerOrganizationId:
+                format: int64
+                type: integer
+                description: Зээлдэгчийн байгууллага
+                title: Зээлдэгчийн байгууллага
+            BorrowerName:
+                title: Зээлдэгчийн нэр
+                maxLength: 240
+                type: string
+                description: Зээлдэгчийн нэр
+            BorrowerDesc:
+                title: Зээлдэгчийн дэлгэрэнгүй мэдээлэл
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Зээлдэгчийн дэлгэрэнгүй мэдээлэл
+            BorrowerCountry:
+                title: Зээлдэгчийн улс
+                maxLength: 30
+                type: string
+                description: Зээлдэгчийн улс
+            BorrowerAddressFormatId:
+                format: int64
+                type: integer
+                description: Зээлдэгчийн хаягийн формат
+                title: Зээлдэгчийн хаягийн формат
+            BorrowerAddressId:
+                format: int64
+                type: integer
+                description: Зээлдэгчийн хаяг
+                title: Зээлдэгчийн хаяг
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13223,51 +13993,150 @@ definitions:
         type: object
     persons-materials-item:
         properties:
-            businessUnitId:
+            MaterialCategory:
+                title: Баримт бичгийн категори
+                maxLength: 30
+                type: string
+                description: Баримт бичгийн категори
+            MaterialType:
+                title: Баримт бичгийн төрөл
+                maxLength: 30
+                type: string
+                description: Баримт бичгийн төрөл
+            MaterialSubtype:
+                title: Баримт бичгийн дэд төрөл
+                maxLength: 30
+                type: string
+                description: Баримт бичгийн дэд төрөл
+            AuthorityCountry:
+                title: Олгосон байгууллагын улс
+                maxLength: 30
+                type: string
+                description: Олгосон байгууллагын улс
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        type: object
+    persons-materials-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн ID.
-                title: ID
-            businessUnitAddressId:
+                description: Энтерпрайз
+                title: Энтерпрайз
+            PersonMaterialId:
                 format: int64
                 type: integer
-                description: Салбар нэгжийн хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
+                description: Хүний материалын дугаар
+                title: Хүний материалын дугаар
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: Хүн
+            MaterialCategory:
+                title: Баримт бичгийн категори
+                maxLength: 30
+                type: string
+                description: Баримт бичгийн категори
+            MaterialType:
+                title: Баримт бичгийн төрөл
+                maxLength: 30
+                type: string
+                description: Баримт бичгийн төрөл
+            MaterialSubtypeFlag:
+                title: Баримт бичгийн дэд төрөлтэй эсэх
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+                description: Баримт бичгийн дэд төрөлтэй эсэх
+            MaterialSubtype:
+                title: Баримт бичгийн дэд төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Баримт бичгийн дэд төрөл
+            IssuedDate:
+                format: date-time
+                type: string
+                description: Олгосон огноо
+                title: Олгосон огноо
+            ExpiryFlag:
+                title: Дуусах хугацаатай эсэх
+                maxLength: 1
+                type: string
+                description: Дуусах хугацаатай эсэх
+            ExpiryDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            MaterialNumber:
+                title: Баримт бичгийн дугаар
+                maxLength: 240
+                type: string
+                description: Баримт бичгийн дугаар
+            AuthorityId:
+                format: int64
+                type: integer
+                description: Олгосон байгууллага
+                title: Олгосон байгууллага
+            AuthorityName:
+                title: Олгосон байгууллагын нэр
+                maxLength: 240
+                type: string
+                description: Олгосон байгууллагын нэр
+            AuthorityDesc:
+                title: Олгосон байгууллагын тайлбар
+                maxLength: 4000
+                type: string
+                description: Олгосон байгууллагын тайлбар
+            AuthorityCountry:
+                title: Олгосон байгууллагын улс
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
-                format: int64
-                type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
-                format: int64
-                type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Олгосон байгууллагын улс
+            AuthorityAddress:
+                title: Олгосон байгууллагын хаяг
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Олгосон байгууллагын хаяг
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Нэмэлт тайлбар
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13341,48 +14210,224 @@ definitions:
             LegalEntityId:
                 format: int64
                 type: integer
-                description: Албан байгууллагын ID.
-                title: ID
-            legalEntityAddressId:
+                description: Албан байгууллага
+                title: Албан байгууллага
+            ResourceTypeId:
                 format: int64
                 type: integer
-                description: Албан байгууллагын хаягийн ID.
+                description: Нөөцийн төрөл
                 title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
+            ResourceSubtypeFlag:
+                title: Дэд төрөлтэй эсэх
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
-                maxLength: 30
-                type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
-                maxLength: 30
-                type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Дэд төрөлтэй эсэх
+            ResourceSubtypeId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Дэд төрөл
+                title: ID
+            ResourceExpiryFlag:
+                title: Хугацаатай эсэх
+                maxLength: 1
+                type: string
+                description: Хугацаатай эсэх
+            ResourceStatus:
+                title: Нөөцийн төлөв
+                maxLength: 30
+                type: string
+                description: Нөөцийн төлөв
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Үйлдэл
+                title: ID
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: ID
+            Status:
+                title: Төлөв
+                maxLength: 1
+                type: string
+                description: Төлөв
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
+        type: object
+    resources-item2:
+        properties:
+            EnterpriseId:
+                format: int64
+                type: integer
+                description: Энтерпрайз
+                title: ID
+            ResourceId:
+                format: int64
+                type: integer
+                description: Нөөц
+                title: ID
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            LegalEntityId:
+                format: int64
+                type: integer
+                description: Албан байгууллага
+                title: Албан байгууллага
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: ID
+            ResourceTypeId:
+                format: int64
+                type: integer
+                description: Нөөцийн төрөл
+                title: ID
+            ResourceSubtypeFlag:
+                title: Дэд төрөлтэй эсэх
+                maxLength: 1
+                type: string
+                description: Дэд төрөлтэй эсэх
+            ResourceSubtypeId:
+                format: int64
+                type: integer
+                description: Дэд төрөл
+                title: ID
+            ResourceExpiryFlag:
+                title: Хугацаатай эсэх
+                maxLength: 1
+                type: string
+                description: Хугацаатай эсэх
+            ResourceExpiryDays:
+                format: int64
+                type: integer
+                description: Хүчинтэй хугацаа
+                title: ID
+            IssuedDate:
+                format: date-time
+                type: string
+                description: Бүртгэсэн огноо
+                title: Бүртгэсэн огноо
+            ExpiryDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            ResourceNumber:
+                title: Нөөцийн бүртгэлийн дугаар
+                maxLength: 240
+                type: string
+                description: Нөөцийн бүртгэлийн дугаар
+            ResourceDesc:
+                title: Нөөцийн бүртгэлийн тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Нөөцийн бүртгэлийн тайлбар
+            DecisionDate:
+                format: date-time
+                type: string
+                description: Тушаал/шийдвэрийн огноо
+                title: Тушаал/шийдвэрийн огноо
+            DecisionNumber:
+                title: Тушаал/ шийдвэрийн дугаар
+                maxLength: 240
+                type: string
+                description: Тушаал/ шийдвэрийн дугаар
+            DecisionDesc:
+                title: Тушаал/ шийдвэрийн тайлбар
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Тушаал/ шийдвэрийн тайлбар
+            ResourceStatus:
+                title: Нөөцийн төлөв
+                maxLength: 30
+                type: string
+                description: Нөөцийн төлөв
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: ID
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: ID
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13503,134 +14548,309 @@ definitions:
             LegalEntityId:
                 format: int64
                 type: integer
-                description: Албан байгууллагын ID
-                title: Албан байгууллагын ID
-                readOnly: true
-            LegalEntityCode:
-                title: Код
-                maxLength: 30
-                type: string
-                description: Албан байгууллагын код
-            Name:
-                title: Нэр
-                maxLength: 240
-                type: string
-                description: Албан байгууллагын нэр
-            Description:
-                title: Тайлбар
-                maxLength: 500
-                type: string
-                description: Албан байгууллагын тайлбар
-            OrganizationType:
-                title: Төрөл
-                maxLength: 30
-                type: string
-                description: Албан байгууллагын төрөл
-            OrganizationSubtypeFlag:
-                title: Дэд төрөлтэй эсэх
-                maxLength: 1
-                type: string
-                description: Дэд төрөлтэй эсэх [Y/N]
-            OrganizationSubtype:
-                title: Дэд төрөл
-                maxLength: 30
-                type: string
-                description: Албан байгууллагын дэд төрөл
-            IdentifierType:
-                title: Тодорхойлох төрөл
-                maxLength: 30
-                type: string
-                description: 'Албан байгууллага тодорхойлох төрөл. Жнь: Байгууллагын регистрийн дугаар'
-            IdentifierNumber:
-                title: Тодорхойлох дугаар
-                maxLength: 30
-                type: string
-                description: 'Албан байгууллага тодорхойлох дугаар'
-            IdentificationStatus:
-                title: Тодорхойлох төлөв
-                maxLength: 30
-                type: string
-                description: 'Албан байгууллага тодорхойлох төлөв'
-            LegislationCode:
-                title: Хуулийн код. Улсын код байна.
-                maxLength: 30
-                type: string
-                description: Хуулийн код. Улсын код байна.
-            DatasetId:
+                description: Албан байгууллага
+                title: Албан байгууллага
+            PersonId:
                 format: int64
                 type: integer
-                description: Мэдээллийн хүрээний ID
-                title: Мэдээллийн хүрээний ID
-            ManagerPersonId:
+                description: Хүн
+                title: ID
+            DisciplinaryTypeId:
                 format: int64
                 type: integer
-                description: Удирдлагын хүний ID
-                title: Удирдлагын хүний ID
-            ManagerAssignmentId:
+                description: Төрөл
+                title: ID
+            RequesterType:
+                title: Хүсэлт гаргагчийн төрөл
+                maxLength: 30
+                type: string
+                description: Хүсэлт гаргагчийн төрөл
+            RequesterOrganizationId:
                 format: int64
                 type: integer
-                description: Удирдлагын ажил эрхлэлтийн ID
-                title: Удирдлагын ажил эрхлэлтийн ID
-            EstablishmentDate:
-                format: date
-                type: string
-                description: Байгуулагдсан огноо
-                title: Байгуулагдсан огноо
-            IndustryCode:
-                title: Эдийн засгийн салбар
+                description: Хүсэлт гаргасан байгууллага
+                title: Хүсэлт гаргасан байгууллага
+            ReporterType:
+                title: Мэдээлэгчийн төрөл
                 maxLength: 30
                 type: string
-                description: Эдийн засгийн салбар
-            LempGeneralGovernor:
-                title: Ерөнхийлөн захирагч
+                description: Мэдээлэгчийн төрөл
+            ReporterOrganizationId:
+                format: int64
+                type: integer
+                description: Мэдээлсэн байгууллага
+                title: Мэдээлсэн байгууллага
+            DisciplinaryConclusion:
+                title: Дүгнэлт
                 maxLength: 30
                 type: string
-                description: Ерөнхийлөн захирагч
-            AdministrationType:
-                title: Засаг захиргааны төрөл
+                description: Дүгнэлт
+            DisciplinaryDecision:
+                title: Шийдвэр
                 maxLength: 30
                 type: string
-                description: Засаг захиргааны төрөл
-            AdministrationLevelFlag:
-                title: Засаг захиргааны түвшинтэй эсэх [Y/N]
+                description: Шийдвэр
+            DecisionMemberId:
+                format: int64
+                type: integer
+                description: Шийдвэр гаргасан гишүүн
+                title: Шийдвэр гаргасан гишүүн
+            DisciplinaryStatus:
+                title: Сахилгын зөрчлийн төлөв
+                maxLength: 30
+                type: string
+                description: Сахилгын зөрчлийн төлөв
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            Status:
+                title: Төлөв
                 maxLength: 1
                 type: string
-                description: Засаг захиргааны түвшинтэй эсэх [Y/N]
-            AdministrationLevel:
-                title: Засаг захиргааны түвшин
-                maxLength: 30
+                description: Төлөв
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
+        type: object
+    disciplinaries-item2:
+        properties:
+            EnterpriseId:
+                format: int64
+                type: integer
+                description: Энтерпрайз ID
+                title: Энтерпрайз ID
+            DisciplinaryId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчил
+                title: Сахилгын зөрчил
+            EffectiveStartDate:
+                format: date-time
                 type: string
-                description: Засаг захиргааны түвшин
-            AdministrationFlag:
-                title: Засаг захиргааны нэгжтэй эсэх [Y/N]
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            LegalEntityId:
+                format: int64
+                type: integer
+                description: Албан байгууллага
+                title: Албан байгууллага
+            PersonId:
+                format: int64
+                type: integer
+                description: Хүн
+                title: ID
+            DisciplinaryTypeId:
+                format: int64
+                type: integer
+                description: Төрөл
+                title: ID
+            DisciplinaryStageFlag:
+                title: Үе шаттай шийдсэн эсэх
                 maxLength: 1
                 type: string
-                description: Засаг захиргааны нэгжтэй эсэх [Y/N]
-            Administration:
-                title: Засаг захиргааны нэгж
-                maxLength: 30
+                description: Үе шаттай шийдсэн эсэх
+            DisciplinaryPurgeFlag:
+                title: Цагаатгах эсэх
+                maxLength: 1
                 type: string
-                description: Засаг захиргааны нэгж
-            WorkStartTime:
-                title: Ажил эхлэх цаг
+                description: Цагаатгах эсэх
+            DisciplinaryPurgeDays:
+                format: int64
+                type: integer
+                description: Цагаатгах хоног
+                title: Цагаатгах хоног
+            RequestNumber:
+                title: Хүсэлт/өргөдлийн дугаар
                 maxLength: 240
                 type: string
-                description: Ажил эхлэх цаг (HH:MM)
-            WorkEndTime:
-                title: Ажил дуусах цаг
-                maxLength: 240
+                description: Хүсэлт/өргөдлийн дугаар
+            RequestDesc:
+                title: Хүсэлт/өргөдлийн тайлбар
+                maxLength: 4000
                 type: string
-                description: Ажил дуусах цаг (HH:MM)
-                readOnly: true
-            WorkingHours:
-                type: number
-                description: 'Ажлын стандарт ачаалал. Жнь: Ихэнх байгууллага ажлын 7 хоногт 40 цагийн ачаалалтай байдаг.'
-                title: 'Ажлын стандарт ачаалал (цагаар)'
-            WorkingHoursFrequency:
-                title: Ажлын стандарт ачааллын давтамж
+                description: Хүсэлт/өргөдлийн тайлбар
+            RequestedDate:
+                format: date-time
+                type: string
+                description: Хүсэлт гаргасан огноо
+                title: Хүсэлт гаргасан огноо
+            RequesterType:
+                title: Хүсэлт гаргагчийн төрөл
                 maxLength: 30
                 type: string
-                description: 'Ажлын стандарт ачааллын давтамж. Жнь: 7 хоног, сар, ...'
+                description: Хүсэлт гаргагчийн төрөл
+            RequesterPersonId:
+                format: int64
+                type: integer
+                description: Хүсэлт гаргасан хүн
+                title: Хүсэлт гаргасан хүн
+            RequesterOrganizationId:
+                format: int64
+                type: integer
+                description: Хүсэлт гаргасан байгууллага
+                title: Хүсэлт гаргасан байгууллага
+            RequesterDesc:
+                title: Хүсэлт гаргагчийн нэмэлт мэдээлэл
+                maxLength: 4000
+                type: string
+                description: Хүсэлт гаргагчийн нэмэлт мэдээлэл
+            ReportedDate:
+                format: date-time
+                type: string
+                description: Мэдээлсэн огноо
+                title: Мэдээлсэн огноо
+            ReporterType:
+                title: Мэдээлэгчийн төрөл
+                maxLength: 30
+                type: string
+                description: Мэдээлэгчийн төрөл
+            ReporterPersonId:
+                format: int64
+                type: integer
+                description: Мэдээлсэн хүн
+                title: Мэдээлсэн хүн
+            ReporterOrganizationId:
+                format: int64
+                type: integer
+                description: Мэдээлсэн байгууллага
+                title: Мэдээлсэн байгууллага
+            ReporterDesc:
+                title: Мэдээлэгчийн нэмэлт мэдээлэл
+                maxLength: 4000
+                type: string
+                description: Мэдээлэгчийн нэмэлт мэдээлэл
+            DisciplinaryConclusion:
+                title: Дүгнэлт
+                maxLength: 30
+                type: string
+                description: Дүгнэлт
+            DisciplinaryConclusionDesc:
+                title: Ерөнхий дүгнэлт
+                maxLength: 4000
+                type: string
+                description: Ерөнхий дүгнэлт
+            DisciplinaryDecision:
+                title: Шийдвэр
+                maxLength: 30
+                type: string
+                description: Шийдвэр
+            DecisionDate:
+                format: date-time
+                type: string
+                description: Тушаал/шийдвэрийн огноо
+                title: Тушаал/шийдвэрийн огноо
+            DecisionNumber:
+                title: Тушаал/ шийдвэрийн дугаар
+                maxLength: 240
+                type: string
+                description: Тушаал/ шийдвэрийн дугаар
+            DecisionMemberId:
+                format: int64
+                type: integer
+                description: Шийдвэр гаргасан гишүүн
+                title: Шийдвэр гаргасан гишүүн
+            DecisionDesc:
+                title: Тушаал/ шийдвэрийн тайлбар
+                maxLength: 4000
+                type: string
+                description: Тушаал/ шийдвэрийн тайлбар
+            PurgeDate:
+                format: date-time
+                type: string
+                description: Цагаатгах огноо
+                title: Цагаатгах огноо
+            DisciplinaryStatus:
+                title: Сахилгын зөрчлийн төлөв
+                maxLength: 30
+                type: string
+                description: Сахилгын зөрчлийн төлөв
+            ActionType:
+                title: Үйлдлийн төрөл
+                maxLength: 30
+                type: string
+                description: Үйлдлийн төрөл
+            ActionId:
+                format: int64
+                type: integer
+                description: Үйлдэл
+                title: Үйлдэл
+            ActionReasonId:
+                format: int64
+                type: integer
+                description: Үйлдлийн шалтгаан
+                title: Үйлдлийн шалтгаан
+            ActionDate:
+                format: date-time
+                type: string
+                description: Үйлдлийн огноо
+                title: Үйлдлийн огноо
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13667,6 +14887,53 @@ definitions:
                 type: array
                 description: Link Relations
                 title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
         type: object
     disciplinaries-members:
         properties:
@@ -13701,51 +14968,132 @@ definitions:
         type: object
     disciplinaries-members-item:
         properties:
-            LegalEntityId:
-                format: int64
-                type: integer
-                description: Албан байгууллагын ID.
-                title: ID
-            legalEntityAddressId:
-                format: int64
-                type: integer
-                description: Албан байгууллагын хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            MemberRole:
+                title: Гишүүний үүрэг
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Гишүүний үүрэг
+            MemberType:
+                title: Гишүүний төрөл
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
-                format: int64
-                type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
-                format: int64
-                type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Гишүүний төрөл
+            MemberDesc:
+                title: Гишүүний тухай
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Гишүүний тухай
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
+        type: object
+    disciplinaries-members-item2:
+        properties:
+            EnterpriseId:
+                format: int64
+                type: integer
+                description: Энтерпрайз ID
+                title: Энтерпрайз ID
+            DisciplinaryMemberId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчлийн гишүүн
+                title: Сахилгын зөрчлийн гишүүн
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            DisciplinaryId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчил
+                title: Сахилгын зөрчил
+            MemberRole:
+                title: Гишүүний үүрэг
+                maxLength: 30
+                type: string
+                description: Гишүүний үүрэг
+            MemberType:
+                title: Гишүүний төрөл
+                maxLength: 30
+                type: string
+                description: Гишүүний төрөл
+            MemberName:
+                title: Гишүүний нэр
+                maxLength: 240
+                type: string
+                description: Гишүүний нэр
+            MemberPersonId:
+                format: int64
+                type: integer
+                description: Гишүүн хүний ID
+                title: Гишүүн хүний ID
+            MemberOrganizationId:
+                format: int64
+                type: integer
+                description: Гишүүн байгууллагын ID
+                title: Гишүүн байгууллагын ID
+            MemberDesc:
+                title: Гишүүний тухай
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Гишүүний тухай
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -13863,51 +15211,132 @@ definitions:
         type: object
     disciplinaries-reasons-item:
         properties:
-            LegalEntityId:
-                format: int64
-                type: integer
-                description: Албан байгууллагын ID.
-                title: ID
-            legalEntityAddressId:
-                format: int64
-                type: integer
-                description: Албан байгууллагын хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
-                maxLength: 1
-                type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
+            DisciplinaryReason:
+                title: Сахилгын зөрчлийн үндэслэл
                 maxLength: 30
                 type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
+                description: Сахилгын зөрчлийн үндэслэл
+            ReasonMemberId:
+                format: int64
+                type: integer
+                description: Үндэслэл гаргасан гишүүн
+                title: Үндэслэл гаргасан гишүүн
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
+        type: object
+    disciplinaries-reasons-item2:
+        properties:
+            EnterpriseId:
+                format: int64
+                type: integer
+                description: Энтерпрайз ID
+                title: Энтерпрайз ID
+            DisciplinaryReasonId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчлийн үндэслэл
+                title: Сахилгын зөрчлийн үндэслэл
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            DisciplinaryId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчил
+                title: Сахилгын зөрчил
+            DisciplinaryTypeId:
+                format: int64
+                type: integer
+                description: Төрөл
+                title: ID
+            DisciplinaryStageId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчлийн үе шат
+                title: Сахилгын зөрчлийн үе шат
+            DisciplinaryStage:
+                title: Сахилгын зөрчлийн үе шат
                 maxLength: 30
                 type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Сахилгын зөрчлийн үе шат
+            DisciplinaryReason:
+                title: Сахилгын зөрчлийн үндэслэл
+                maxLength: 30
+                type: string
+                description: Сахилгын зөрчлийн үндэслэл
+            ReasonMemberId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
-                format: int64
-                type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Үндэслэл гаргасан гишүүн
+                title: Үндэслэл гаргасан гишүүн
+            ReasonDate:
+                format: date-time
+                type: string
+                description: Үндэслэл гаргасан огноо
+                title: Үндэслэл гаргасан огноо
+            Comments:
+                title: Нэмэлт тайлбар
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
-                maxLength: 4000
-                type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Нэмэлт тайлбар
             Status:
                 title: Төлөв
                 maxLength: 1
@@ -14025,51 +15454,167 @@ definitions:
         type: object
     disciplinaries-stages-item:
         properties:
-            LegalEntityId:
+            DisciplinaryStage:
+                title: Сахилгын зөрчлийн үе шат
+                maxLength: 30
+                type: string
+                description: Сахилгын зөрчлийн үе шат
+            StageDecision:
+                title: Тайзны шийдвэр
+                maxLength: 30
+                type: string
+                description: Тайзны шийдвэр
+            StageDecisionMemberId:
                 format: int64
                 type: integer
-                description: Албан байгууллагын ID.
-                title: ID
-            legalEntityAddressId:
-                format: int64
-                type: integer
-                description: Албан байгууллагын хаягийн ID.
-                title: ID
-            PrimaryFlag:
-                title: Үндсэн эсэх
+                description: Тайзны шийдвэрийн гишүүн ID
+                title: Тайзны шийдвэрийн гишүүн ID
+            DisciplinaryConclusion:
+                title: Дүгнэлт
+                maxLength: 30
+                type: string
+                description: Дүгнэлт
+            Status:
+                title: Төлөв
                 maxLength: 1
                 type: string
-                description: Үндсэн хаяг эсэх [Y/N] утга байна.
-            AddressType:
-                title: Хаягийн төрөл
-                maxLength: 30
-                type: string
-                description: Хаягийн төрөл.
-            TerritoryCode:
-                title: Улс
-                maxLength: 30
-                type: string
-                description: Хаягийн улсын код байна.
-            AddressFormatId:
+                description: Төлөв
+            links:
+                items:
+                    $ref: '#/definitions/link'
+                type: array
+                description: Link Relations
+                title: Items
+        x-links:
+            - 
+                rel: lov
+                title: Address Type LOV
+                description: 'The list of values for the status of a grade, such as ACTIVE or INACTIVE.<p>The following properties are defined on the LOV link relation:</p><ul><li>Source Attribute: ActiveStatus; Target Attribute: LookupCode</li><li>Display Attribute: Meaning</li></ul>'
+                method: get
+                href: '/hcm/ghr/setup/resources/2.0/salaryGrades/{salaryGradesUniqID}/lov/GradeStatusLOV?fields=LookupCode,Meaning'
+                mediaType: application/json
+                encType: application/x-www-form-urlencoded
+                targetSchema:
+                    properties:
+                        LookupCode:
+                            type: string
+                            description: Unique code for the lookup.
+                        Meaning:
+                            type: string
+                            description: Display value for the lookup in the application.
+                    type: object
+                schema:
+                    properties:
+                        limit:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулгаас заагдсан тоогоор нөөцийг хязгаарлан буцаана. Гэхдээ энэ хязгаар нь боломжит нөөцийн тоогоос хэтрэхгүй байна.
+                        offset:
+                            type: integer
+                            description: Энэ параметр нь нөөцийн цуглуулганы эхлэх байршлыг заахад ашиглагдана. Үндсэн утга нь 0 байна.
+                        totalResults:
+                            type: boolean
+                            description: 'Энэ параметр нь нийт нөөцийн тоог буцаахад ашиглагдана. "?totalResults=true" гэж ашиглана. Үндсэн утга нь "false" байна.'
+                        onlyData:
+                            type: boolean
+                            description: 'Зөвхөн өгөгдөл харуулна (Жишээ нь линкийн хэсгийг харуулахгүй).'
+                        dependency:
+                            type: string
+                            description: 'Энэ параметр нь хоорондоо хамааралтай багануудын хамаарлыг тодорхойлно. Жишээ нь: dependency=ProductId=2<br><br>Ашиглах формат: &lt;attr1&gt;=&lt;val1&gt;,&lt;attr2&gt;=&lt;value2&gt;'
+                        orderBy:
+                            type: string
+                            description: 'Энэ параметр нь нөөцийг тодорхойлсон баганаар дарааллуулахад ашиглагдана. Параметрийн утга нь <strong>;</strong> аар ялгарах ба дарааллын тохиргоо ("asc" эсвэл "desc") нь хоорондоо <strong>:</strong> аар ялгарна. Үндсэн утга нь "asc" байна. Жишээ нь: ?orderBy=field1:asc,field2:desc'
+                        links:
+                            items:
+                                $ref: '#/definitions/link'
+                            type: array
+                            description: Объектын мэдээлэлтэй холбоотой линкүүд.
+                    type: object
+                o:properties:
+                    - GradeStatus
+                effectiveMethod: get
+        type: object
+    disciplinaries-stages-item2:
+        properties:
+            EnterpriseId:
                 format: int64
                 type: integer
-                description: Хаягийн форматын ID
-                title: Хаягийн форматын ID
-            AddressId:
+                description: Энтерпрайз ID
+                title: Энтерпрайз ID
+            DisciplinaryStageId:
                 format: int64
                 type: integer
-                description: Хаягийн ID
-                title: Хаягийн ID
-            SinglerowFormattedAddress:
-                title: Нэг мөрөнд форматласан хаяг
+                description: Сахилгын зөрчлийн үе шат
+                title: Сахилгын зөрчлийн үе шат
+            EffectiveStartDate:
+                format: date-time
+                type: string
+                description: Эхлэх огноо
+                title: Эхлэх огноо
+            EffectiveEndDate:
+                format: date-time
+                type: string
+                description: Дуусах огноо
+                title: Дуусах огноо
+            DisciplinaryId:
+                format: int64
+                type: integer
+                description: Сахилгын зөрчил
+                title: Сахилгын зөрчил
+            DisciplinaryTypeId:
+                format: int64
+                type: integer
+                description: Төрөл
+                title: ID
+            DisciplinaryStage:
+                title: Сахилгын зөрчлийн үе шат
+                maxLength: 30
+                type: string
+                description: Сахилгын зөрчлийн үе шат
+            DisciplinaryStageSequence:
+                format: int64
+                type: integer
+                description: Сахилгын шатны дараалал
+                title: Сахилгын шатны дараалал
+            StageDecision:
+                title: Тайзны шийдвэр
+                maxLength: 30
+                type: string
+                description: Тайзны шийдвэр
+            StageDecisionDate:
+                format: date-time
+                type: string
+                description: Тайзны шийдвэр гаргах огноо
+                title: Тайзны шийдвэр гаргах огноо
+            StageDecisionNumber:
+                title: Тайзны шийдвэрийн дугаар
+                maxLength: 240
+                type: string
+                description: Тайзны шийдвэрийн дугаар
+            StageDecisionMemberId:
+                format: int64
+                type: integer
+                description: Тайзны шийдвэрийн гишүүн ID
+                title: Тайзны шийдвэрийн гишүүн ID
+            StageDecisionDesc:
+                title: Тайзны шийдвэр
                 maxLength: 4000
                 type: string
-                description: Нэг мөрөнд форматласан хаяг
-            MultirowFormattedAddress:
-                title: Олон мөрөнд форматласан хаяг
+                description: Тайзны шийдвэр
+            DisciplinaryConclusion:
+                title: Дүгнэлт
+                maxLength: 30
+                type: string
+                description: Дүгнэлт
+            DisciplinaryConclusionDesc:
+                title: Ерөнхий дүгнэлт
                 maxLength: 4000
                 type: string
-                description: Олон мөрөнд форматласан хаяг
+                description: Ерөнхий дүгнэлт
+            Comments:
+                title: Нэмэлт тайлбар
+                maxLength: 4000
+                type: string
+                description: Нэмэлт тайлбар
             Status:
                 title: Төлөв
                 maxLength: 1
